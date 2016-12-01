@@ -31,6 +31,7 @@ class Login extends Component {
         this.props.navigator.push({
           title: 'Results',
           component: Test,
+          passProps: {"appState": this.state}
         });
     }
 
@@ -46,7 +47,7 @@ class Login extends Component {
                 placeholder='Username'
                 value={this.state.username}
                 onChange={this.usernameInput.bind(this)}/>
-                <TextInput
+                <TextInput 
                 style={styles.userInput}
                 placeholder='Password'/>
 
@@ -60,7 +61,7 @@ class Login extends Component {
 </TouchableHighlight>
             </View>
              <Text>
-                {this.state.username}
+                { JSON.stringify(this.state)}
              </Text>
           </ View>
          
@@ -131,7 +132,5 @@ userInput: {
 },
 
 });
-
-
 
 module.exports = Login;

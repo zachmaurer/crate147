@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ReactNative, {
-  AppRegistry,
   StyleSheet,
   Text,
   Image,
@@ -10,13 +9,22 @@ import ReactNative, {
 } from 'react-native';
 
 class Test extends Component {
+
+    constructor(props) {
+      super(props);
+      this.state = props.appState;
+      console.warn(JSON.stringify(props.appState));
+    }
+
     render() {
         return (
             <View style={styles.container}>
              <Image source={require('../.././app/assets/logo.png')} style={styles.image}/>
             <Text>
+
             Success!
             </Text>
+        
             </View>
 
         );
