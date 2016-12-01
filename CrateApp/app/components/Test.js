@@ -1,9 +1,4 @@
-'use strict';
-
 import React, { Component } from 'react';
-var styles = require('./app/styles/styles');
-var Login = require('./app/components/Login');
-
 import ReactNative, {
   AppRegistry,
   StyleSheet,
@@ -14,27 +9,20 @@ import ReactNative, {
   TextInput,
 } from 'react-native';
 
+class Test extends Component {
+    render() {
+        return (
+            <View style={styles.container}>
+             <Image source={require('../.././app/assets/logo.png')} style={styles.image}/>
+            <Text>
+            Success!
+            </Text>
+            </View>
 
-
-class CrateApp extends Component {
-  render() {
-    return (
-      <ReactNative.NavigatorIOS
-        style={{flex:1}}
-        initialRoute={{
-          title: 'Crate',
-          component: Login,    
-        }}/>
-    );
-  }
+        );
+    }
 }
 
-
-
-AppRegistry.registerComponent('CrateApp', () => CrateApp);
-
-
-// **************************************************** STYLES BELOW
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -97,3 +85,6 @@ userInput: {
 },
 
 });
+
+
+module.exports = Test;
