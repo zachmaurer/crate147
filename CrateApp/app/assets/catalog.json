@@ -1,0 +1,47 @@
+[
+{
+"id": 1,
+"name": "Early Girl Tomatoes",
+"type": "Organic",
+"price": "$3.00/lb",
+"season": true,
+"available": true,
+"picture": null,
+"category": "produce",
+},
+
+{
+"id": 2,
+"name": "Strawberries",
+"type": "Organic",
+"price": "$3.00/lb",
+"season": true,
+"available": true,
+"picture": null,
+"category": "produce",
+},
+
+
+{
+"id": 3,
+"name": "Gouda",
+"type": "Organic",
+"price": "$12.00/lb",
+"season": true,
+"available": true,
+"picture": null,
+"category": "dairy",
+},
+
+{
+"id": 4,
+"name": "Whole Milk",
+"type": "Organic",
+"price": "$3.00/gallon",
+"season": true,
+"available": true,
+"picture": null,
+"category": "dairy",
+}
+
+]

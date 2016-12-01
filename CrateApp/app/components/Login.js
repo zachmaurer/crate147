@@ -11,6 +11,7 @@ import ReactNative, {
 } from 'react-native';
 
 import Test from './Test.js';
+import Catalog from './Catalog.js';
 
 
 
@@ -28,9 +29,9 @@ class Login extends Component {
     }
 
     onLogin(event) {
-        this.props.navigator.push({
+        this.props.navigator.replace({
           title: 'Results',
-          component: Test,
+          component: Catalog,
           passProps: {"appState": this.state}
         });
     }
