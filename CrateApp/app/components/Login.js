@@ -30,7 +30,7 @@ class Login extends Component {
 
     onLogin(event) {
         this.props.navigator.replace({
-          title: 'Results',
+          title: 'Crate',
           component: Catalog,
           passProps: {"appState": this.state}
         });
@@ -48,7 +48,7 @@ class Login extends Component {
                 placeholder='Username'
                 value={this.state.username}
                 onChange={this.usernameInput.bind(this)}/>
-                <TextInput 
+                <TextInput  secureTextEntry={true}
                 style={styles.userInput}
                 placeholder='Password'/>
 
@@ -61,9 +61,6 @@ class Login extends Component {
   <Text style={styles.buttonText}>Sign</Text>
 </TouchableHighlight>
             </View>
-             <Text>
-                { JSON.stringify(this.state)}
-             </Text>
           </ View>
          
     );

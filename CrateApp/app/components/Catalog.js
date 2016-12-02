@@ -13,6 +13,9 @@ import ReactNative, {
 
 
 import Tabs from 'react-native-tabs';
+import Test from './Test.js';
+import ProductDetail from './ProductDetail.js';
+import OrderDetail from './OrderDetail.js';
 
 
 var orders = require('../assets/orders.json');
@@ -26,10 +29,11 @@ var catalog_imgs = {
 };
 
 var company_imgs = {
-	"001" : require('../assets/company_imgs/1.jpg'),
-	"003" : require('../assets/company_imgs/2.jpg'),
-	"002" : require('../assets/company_imgs/3.jpg'),
+	1 : require('../assets/company_imgs/1.jpg'),
+	3 : require('../assets/company_imgs/2.jpg'),
+	2 : require('../assets/company_imgs/3.jpg'),
 };
+
 
 
 class Catalog extends Component {
@@ -44,6 +48,22 @@ constructor(props) {
       this.state['catalogData'] = ds.cloneWithRows(catalog);
       //this.setState({page: "orders"});
       //console.warn(JSON.stringify(props.appState));
+    }
+
+    viewProductDetail(id) {
+        this.props.navigator.push({
+          title: "Product Detail",
+          component: ProductDetail,
+          passProps: {productID: id}
+        });
+    }
+
+    viewOrderDetail(id) {
+        this.props.navigator.push({
+          title: "Order Detail",
+          component: OrderDetail,
+          passProps: {orderID: id}
+        });
     }
 
 
@@ -86,43 +106,37 @@ constructor(props) {
 
     renderOrderLi(data) {
     	return (
-
-
+    		<TouchableHighlight onPress={() => this.viewOrderDetail(data.id)}>
     		<View>
 		<View style={{flex:1, alignItems: 'center', flexDirection: 'row'}}>	
     		<Image source={company_imgs[data.id]} style={styles.company_photo}/>
     		<View style={{flex: 1, flexDirection: 'column'}}>
     		<Text style={styles.order_text_h1}>Order #{data.id}</Text>
     		<Text style={styles.order_text_h2}>{data.client}</Text>
-    		
-    		
     		</View>
     		<Text style={[styles.order_text_h2, styles.important_text]}>Due: {data.date}</Text>
     		</View>
     		</View>
-
-
-
-
+    		</TouchableHighlight>
    	);
     }
 
     renderCatalogLi(data) {
-    	var img = '../assets/catalog_imgs/gouda.jpg';
     	return (
+
+    		 <TouchableHighlight onPress={() => this.viewProductDetail(data.id)}>
     		<View>
 		<View style={{flex:1, alignItems: 'center', flexDirection: 'row'}}>	
     		<Image source={catalog_imgs[data.picture]} style={styles.catalog_photo}/>
     		<View style={{flex: 1, flexDirection: 'column'}}>
     		<Text style={styles.order_text_h1}>{data.name}</Text>
-    		<Text style={styles.order_text_h2}>ID #:{data.id}</Text>
-
-    		
+    		<Text style={styles.order_text_h2}>ID #:{data.id}</Text>    		
     		</View>
     		<Text style={styles.order_text_h2}>{data.price}</Text>
     		<Text style={styles.order_text_h2}>{data.type}</Text>
     		</View>
     		</View>
+    		</TouchableHighlight>
 
    	);
     }
@@ -136,7 +150,7 @@ constructor(props) {
 	            <View style={styles.container}>  
 	            <ListView
         			dataSource={this.state.orderData}
-        			renderRow={this.renderOrderLi}
+        			renderRow={(rowData) => this.renderOrderLi(rowData)}
         			renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
         			 renderHeader={() => 
         		            <View style={styles.search_container}>

@@ -13,7 +13,7 @@ class Test extends Component {
     constructor(props) {
       super(props);
       this.state = props.appState;
-      console.warn(JSON.stringify(props.appState));
+      //console.warn(JSON.stringify(props.appState));
     }
 
     render() {
