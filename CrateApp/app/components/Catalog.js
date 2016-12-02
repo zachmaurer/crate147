@@ -11,7 +11,10 @@ import ReactNative, {
   ListView,
 } from 'react-native';
 
+
 import Tabs from 'react-native-tabs';
+
+
 var orders = require('../assets/orders.json');
 var catalog = require('../assets/catalog.json');
 
@@ -24,16 +27,13 @@ var catalog_imgs = {
 
 var company_imgs = {
 	"001" : require('../assets/company_imgs/1.jpg'),
-	"002" : require('../assets/company_imgs/2.jpg'),
-	"003" : require('../assets/company_imgs/3.jpg'),
-
+	"003" : require('../assets/company_imgs/2.jpg'),
+	"002" : require('../assets/company_imgs/3.jpg'),
 };
 
 
-//var img = require('../assets/catalog_imgs/gouda.jpg');
-
-
 class Catalog extends Component {
+
 
 constructor(props) {
       super(props);
@@ -45,6 +45,44 @@ constructor(props) {
       //this.setState({page: "orders"});
       //console.warn(JSON.stringify(props.appState));
     }
+
+
+
+  searchData (searchText, view) { 
+	
+     	 let text = searchText.toLowerCase();
+     	 let items = null;
+	if (view.toString() == 'orders') {
+		items = orders;
+	} else {
+		items = catalog;
+	}
+
+	  let results =  items.filter((n) => {
+		
+		let note = n.client ? n.client.toLowerCase() : 'XYZJASDFOJASDFKJ';
+		let note2 = n.name ? n.name.toLowerCase() : 'XYZJASDFOJASDFKJ';
+		let note3 = n.category ? n.category.toLowerCase() : 'XYZJASDFOJASDFKJ';
+		let note4 = n.type ? n.type.toLowerCase() : 'XYZJASDFOJASDFKJ';
+		//let note3 = n.id ? n.id : 'XYZJASDFOJASDFKJ';
+
+	    return (note.search(text) !== -1) || (note2.search(text) !== -1) || (note3.search(text) !== -1)|| (note4.search(text) !== -1) ;
+	  });
+
+	  results = results ? results : [];
+	 if (view.toString() == 'orders') {
+		this.setState({
+       		orderData: this.state.orderData.cloneWithRows(results)
+     		});
+	} else {
+		this.setState({
+       		catalogData: this.state.catalogData.cloneWithRows(results)
+     		});
+	}
+     
+  };
+
+
 
     renderOrderLi(data) {
     	return (
@@ -99,9 +137,18 @@ constructor(props) {
 	            <ListView
         			dataSource={this.state.orderData}
         			renderRow={this.renderOrderLi}
-        			renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />} />        
+        			renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
+        			 renderHeader={() => 
+        		            <View style={styles.search_container}>
+			    <TextInput
+			      style={styles.search_input}
+			      placeholder="Search..."
+			      onChangeText={(text) => this.searchData(text, 'orders')}
+			    />
+			  </View>}  
+        			  />        
 	 	<Tabs selected={this.state.page} style={{backgroundColor:'white'}}
-	              selectedStyle={{color:'red'}} onSelect={el=>this.setState({page:el.props.name})}>
+	              selectedStyle={{color:'red'}} onSelect={el=>this.setState({page:el.props.name, searchText: ""})}>
 	            <Text name="orders" selectedIconStyle={{borderTopWidth:2,borderTopColor:'red'}}>Orders</Text>
 	            <Text name="catalog" selectedIconStyle={{borderTopWidth:2,borderTopColor:'red'}}>Catalog</Text>
 	            <Text name="profile" selectedIconStyle={{borderTopWidth:2,borderTopColor:'red'}}>Profile</Text>
@@ -117,10 +164,19 @@ constructor(props) {
 	            	style={{height: 100}}
         			dataSource={this.state.catalogData}
         			renderRow={(rowData) => this.renderCatalogLi(rowData)}
-        			renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}/>
+        			renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
+        		            renderHeader={() => 
+        		            <View style={styles.search_container}>
+			    <TextInput
+			      style={styles.search_input}
+			      placeholder="Search..."
+			      onChangeText={(text) => this.searchData(text, 'catalog')}
+			    />
+			  </View>}
+		/>
 	 	
 	 	<Tabs selected={this.state.page} style={{backgroundColor:'white'}}
-	              selectedStyle={{color:'red'}} onSelect={el=>this.setState({page:el.props.name})}>
+	              selectedStyle={{color:'red'}} onSelect={el=>this.setState({page:el.props.name, searchText: ""})}>
 	            <Text name="orders" selectedIconStyle={{borderTopWidth:2,borderTopColor:'red'}}>Orders</Text>
 	            <Text name="catalog" selectedIconStyle={{borderTopWidth:2,borderTopColor:'red'}}>Catalog</Text>
 	            <Text name="profile" selectedIconStyle={{borderTopWidth:2,borderTopColor:'red'}}>Profile</Text>
@@ -137,7 +193,7 @@ constructor(props) {
 	            <Text> Profile 3 </Text>
 	             <Text> {JSON.stringify(this.state)} </Text>
 	 	<Tabs selected={this.state.page} style={{backgroundColor:'white'}}
-	              selectedStyle={{color:'red'}} onSelect={el=>this.setState({page:el.props.name})}>
+	              selectedStyle={{color:'red'}} onSelect={el=>this.setState({page:el.props.name, searchText: ""})}>
 	            <Text name="orders" selectedIconStyle={{borderTopWidth:2,borderTopColor:'red'}}>Orders</Text>
 	            <Text name="catalog" selectedIconStyle={{borderTopWidth:2,borderTopColor:'red'}}>Catalog</Text>
 	            <Text name="profile" selectedIconStyle={{borderTopWidth:2,borderTopColor:'red'}}>Profile</Text>
@@ -154,7 +210,7 @@ constructor(props) {
 	            <Text> Setting 3 </Text>
 	             <Text> {JSON.stringify(this.state)} </Text>
 	 	<Tabs selected={this.state.page} style={{backgroundColor:'white'}}
-	              selectedStyle={{color:'red'}} onSelect={el=>this.setState({page:el.props.name})}>
+	              selectedStyle={{color:'red'}} onSelect={el=>this.setState({page:el.props.name, searchText: ""})}>
 	            <Text name="orders" selectedIconStyle={{borderTopWidth:2,borderTopColor:'red'}}>Orders</Text>
 	            <Text name="catalog" selectedIconStyle={{borderTopWidth:2,borderTopColor:'red'}}>Catalog</Text>
 	            <Text name="profile" selectedIconStyle={{borderTopWidth:2,borderTopColor:'red'}}>Profile</Text>
@@ -226,9 +282,21 @@ li_container: {
   important_text :{
     color: '#D52941'
   },
-   important_text :{
-    color: '#D52941'
-  }
+   search_container: {
+    flex: 1,
+    padding: 8,
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#C1C1C1',
+  },
+  search_input: {
+    height: 30,
+    flex: 1,
+    paddingHorizontal: 8,
+    fontSize: 15,
+    backgroundColor: '#FFFFFF',
+    borderRadius: 2,
+  },
 
 
 });
