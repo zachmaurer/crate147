@@ -1,0 +1,77 @@
+[
+{
+"id": 1,
+"name": "Early Girl Tomatoes",
+"type": "Organic",
+"price": "$4.10/lb",
+"season": true,
+"available": true,
+"picture": "tomato.jpg",
+"category": "produce",
+},
+
+{
+"id": 2,
+"name": "Strawberries",
+"type": "Organic",
+"price": "$6.17/lb",
+"season": true,
+"available": true,
+"picture": "strawberry.jpg",
+"category": "produce",
+},
+
+
+{
+"id": 3,
+"name": "Gouda",
+"type": "Standard",
+"price": "$12.00/lb",
+"season": true,
+"available": true,
+"picture": "gouda.jpg",
+"category": "dairy",
+},
+
+{
+"id": 4,
+"name": "Whole Milk",
+"type": "Organic",
+"price": "$3.00/gallon",
+"season": true,
+"available": true,
+"picture": "milk.jpg",
+"category": "dairy",
+},
+{
+"id": 5,
+"name": "2% Milk",
+"type": "Organic",
+"price": "$3.00/gallon",
+"season": true,
+"available": true,
+"picture": "milk.jpg",
+"category": "dairy",
+},
+{
+"id": 6,
+"name": "Skim Milk",
+"type": "Organic",
+"price": "$3.00/gallon",
+"season": true,
+"available": true,
+"picture": "milk.jpg",
+"category": "dairy",
+},
+{
+"id": 7,
+"name": "Lactose-Free Milk",
+"type": "Standard",
+"price": "$3.00/gallon",
+"season": true,
+"available": true,
+"picture": "milk.jpg",
+"category": "dairy",
+}
+
+]
