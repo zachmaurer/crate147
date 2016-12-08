@@ -8,11 +8,12 @@ import ReactNative, {
   View,
   TouchableHighlight,
   TextInput,
+  Alert,
 } from 'react-native';
 
 import Test from './Test.js';
 import Catalog from './Catalog.js';
-
+import Shop from './Shop.js';
 
 
 class Login extends Component {
@@ -20,7 +21,6 @@ class Login extends Component {
       super(props);
       this.state = {
         username: null,
-        test: 'london',
       };
     }
 
@@ -29,11 +29,21 @@ class Login extends Component {
     }
 
     onLogin(event) {
+      if(this.state.username === "farm") {
         this.props.navigator.replace({
           title: 'Crate',
           component: Catalog,
           appState: this.state
         });
+      } else if(this.state.username === "rest") {
+        this.props.navigator.replace({
+          title: 'Crate',
+          component: Shop,
+          appState: this.state
+        });
+      } else {
+        Alert.alert("Oops! Login Error.","Invalid username/password.")
+      }
     }
 
 
