@@ -42,7 +42,7 @@ class Login extends Component {
           <View style={styles.container}>
             <Image source={require('../.././app/assets/logo.png')} style={styles.image}/>
             <View style={{flex:1}}>
-                <Text> Sign In </Text>
+                <Text> Log In </Text>
                 <TextInput
                 style={styles.userInput}
                 placeholder='Username'
@@ -58,7 +58,7 @@ class Login extends Component {
               </TouchableHighlight>
               <TouchableHighlight style={styles.button}
     underlayColor='#99d9f4'>
-  <Text style={styles.buttonText}>Sign</Text>
+  <Text style={styles.buttonText}>Sign Up</Text>
 </TouchableHighlight>
             </View>
           </ View>
