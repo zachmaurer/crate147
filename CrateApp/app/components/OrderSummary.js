@@ -13,6 +13,7 @@ import ReactNative, {
   Alert,
 } from 'react-native';
 
+import Hr from 'react-native-hr';
 import Shop from './Shop.js'
 
 var orders = require('../assets/orders.json');
@@ -33,6 +34,12 @@ var company_imgs = {
 	2 : require('../assets/company_imgs/3.jpg'),
 };
 
+var profile_imgs = {
+  1 : require('../assets/profile_imgs/1.jpg'),
+  2 : require('../assets/profile_imgs/2.jpg'),
+  3 : require('../assets/profile_imgs/3.jpg'),
+};
+
 var farm_imgs = {
   1 : require('../assets/farm_imgs/rochester.jpg'),
   2 : require('../assets/farm_imgs/delorro.jpg'),
@@ -47,6 +54,7 @@ class OrderSummary extends Component {
     this.state = props.route.appState;
     this.state['farmID'] = props.route.farmID;
     this.state['product'] = props.route.product;
+    this.state['orderQuant'] = 1;
     var _this = this;
     this.is_in_season = (function(){
       return _this.state.product.season ? "Yes" : "No";
@@ -71,6 +79,23 @@ class OrderSummary extends Component {
     });
   }
 
+  orderQuantPlus(){
+    var result = this.state.orderQuant + 1;
+    if(result < 10) {
+      this.setState({
+        orderQuant: result
+      });
+    }
+  }
+
+  orderQuantMinus(){
+  var result = this.state.orderQuant - 1;
+    if(result > 0) {
+      this.setState({
+        orderQuant: result
+      });
+    }
+  }
 
   render() {
     var id = this.state.farmID;
@@ -79,7 +104,7 @@ class OrderSummary extends Component {
     }
     var farm = farms.find(withProductID);
     return(
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
       <View style={{alignItems: 'center', flexDirection: 'row'}}> 
         <Image source={farm_imgs[this.state.farmID]} style={styles.product_image}/>
         <View style={{flexDirection: 'column'}}>
@@ -87,19 +112,105 @@ class OrderSummary extends Component {
           <Text style={styles.order_text_h2}>Customer Rating: {farm.rating}</Text>
         </View>
       </View>
-      <Text style={styles.order_text_h1}>Order Information</Text>
-      <Text style={styles.order_text_h2}>{this.state.product.name}</Text>
-      <Text style={styles.order_text_h2}>{this.state.product.type} {this.state.product.category}</Text>
-      <Text style={styles.order_text_h2}>In Season: {this.is_in_season}</Text>
-      <Text style={styles.order_text_h2}>Price: {this.state.product.price} </Text>
-      <View style={{alignItems: 'center'}}>
-        <TouchableHighlight style={styles.button}
-          underlayColor='#99d9f4'
-          onPress={() => this.returnToShop()}>
-          <Text style={styles.buttonText}>Add to Crate</Text>
-        </TouchableHighlight>
+      <View style={{marginTop:10}}></View>
+      <Hr lineColor='#8E8E8E' />
+      <View style={{flexDirection:'row'}}>
+        <View style={{flex:0.5, flexDirection:'column'}}>
+          <Text style={styles.order_text_h1_lo}>Order Information</Text>
+          <Text style={styles.order_text_h2}>{this.state.product.name}</Text>
+          <Text style={styles.order_text_h2}>{this.state.product.type} {this.state.product.category}</Text>
+          <Text style={styles.order_text_h2}>In Season: {this.is_in_season}</Text>
+          <Text style={styles.order_text_h2}>Price: {this.state.product.price} </Text>
+        </View>
+        <View style={{flex:0.5, flexDirection:'column', alignItems:'flex-end', justifyContent:'flex-end', marginRight: 12}}>
+          <Image source={catalog_imgs[this.state.product.picture]} style={styles.product_image} />
+        </View>
       </View>
+      <Hr lineColor='#8E8E8E' />
+      <View style={{flex:1, flexDirection:'column'}}>
+        <View style={{marginTop: 5, flexDirection:'row', alignSelf:'center', justifyContent:'center'}}>
+          <Text style={styles.order_text_h1_lo}>Order Quantity</Text>
+        </View>
+        <View style={{flexDirection:'row'}}>
+          <View style={{flexDirection:'column', flex:0.40, alignItems:'flex-end', justifyContent:'flex-end'}}>
+            <TouchableHighlight style={styles.button_small}
+              underlayColor='#99d9f4'
+              onPress={() => this.orderQuantMinus()}>
+              <Text style={styles.buttonText}>-</Text>
+            </TouchableHighlight>
+          </View>
+          <View style={{flexDirection:'column', flex:0.2}}>
+            <TouchableHighlight style={styles.button_screen}
+              underlayColor='#99d9f4'>
+              <Text style={styles.buttonText_screen}>{this.state.orderQuant}</Text>
+            </TouchableHighlight>
+          </View>
+          <View style={{flexDirection:'column', flex: 0.4, alignItems:'flex-start', justifyContent:'flex-start'}}>
+            <TouchableHighlight style={styles.button_small}
+              underlayColor='#99d9f4'
+              onPress={() => this.orderQuantPlus()}>
+              <Text style={styles.buttonText}>+</Text>
+            </TouchableHighlight>
+          </View>
+        </View>
+        <View style={{flexDirection:'row', alignItems: 'center', alignSelf: 'center'}}>
+          <TouchableHighlight style={styles.button}
+            underlayColor='#99d9f4'
+            onPress={() => this.returnToShop()}>
+            <Text style={styles.buttonText}>Add to Crate</Text>
+          </TouchableHighlight>
+        </View>
+        <Hr lineColor='#8E8E8E' />
       </View>
+
+      {/*Reviews*/}
+      <View style={{flex:1, flexDirection:'row', alignItems:'center', justifyContent:'center'}}>
+        <Text style={styles.order_text_title}>Reviews</Text>
+      </View>
+      {/*#1*/}
+      <View style={{marginTop: 30, flex:1, flexDirection:'row'}}>
+        <View style={{flex:0.25, flexDirection:'column', alignItems:'center'}}>
+          <Image source={profile_imgs[1]} style={styles.catalog_photo}/>
+        </View>
+        <View style={{flex:0.75, flexDirection:'column'}}>
+          <View style={{flex:0.4, flexDirection:'row'}}>
+            <Text style={styles.order_text_h1_lo}>Douglas Robinson</Text>
+          </View>
+          <View style={{flex:0.6, flexDirection:'row'}}>
+          <Text style={styles.order_text_h2}>They consistently deliver on their promise for high-quality, fresh, sustainable ingredients. I am proud to be their partner in our mission for sustainable food, and I and one of many satisfied customers.</Text>
+          </View>
+        </View>
+      </View>
+      {/*#2*/}
+      <View style={{marginTop: 30, flex:1, flexDirection:'row'}}>
+        <View style={{flex:0.25, flexDirection:'column', alignItems:'center'}}>
+          <Image source={profile_imgs[2]} style={styles.catalog_photo}/>
+        </View>
+        <View style={{flex:0.75, flexDirection:'column'}}>
+          <View style={{flex:0.4, flexDirection:'row'}}>
+            <Text style={styles.order_text_h1_lo}>Anita Lao</Text>
+          </View>
+          <View style={{flex:0.6, flexDirection:'row'}}>
+          <Text style={styles.order_text_h2}>Great ingredients from people you can count on.  Their dedication to sustainable food is inspiring, and they never forget how their food is going to end up on someone's table.  Truly great partners.</Text>
+          </View>
+        </View>
+      </View>
+      {/*#3*/}
+      <View style={{marginTop: 30, flex:1, flexDirection:'row'}}>
+        <View style={{flex:0.25, flexDirection:'column', alignItems:'center'}}>
+          <Image source={profile_imgs[3]} style={styles.catalog_photo}/>
+        </View>
+        <View style={{flex:0.75, flexDirection:'column'}}>
+          <View style={{flex:0.4, flexDirection:'row'}}>
+            <Text style={styles.order_text_h1_lo}>Terry Moynihan</Text>
+          </View>
+          <View style={{flex:0.6, flexDirection:'row'}}>
+          <Text style={styles.order_text_h2}>I've been sourcing from them for over 3 years, and they have never flagged in quality.  Plus, they offer some of the best deals in the area.</Text>
+          </View>
+        </View>
+      </View>
+      <View style={{marginTop:60}}></View>
+      </ScrollView>
     );
   }
 
@@ -145,6 +256,12 @@ li_container: {
   },
   order_text_h1: {
     paddingTop: 20,
+    marginLeft: 12,
+    fontSize: 18,
+    //flex:1,
+    //flexDirection: 'row',
+  },
+  order_text_h1_lo: {
     marginLeft: 12,
     fontSize: 18,
     //flex:1,
@@ -201,22 +318,53 @@ li_container: {
   color: 'white',
   alignSelf: 'center'
 },
+buttonText_screen: {
+  fontSize: 18,
+  color: '#000000',
+  alignSelf: 'center'
+},
 button: {
   height: 36,
   width: 250,
   padding: 4,
   margin: 5,
-  marginTop: 40,
   //flex: 1,
   //flexDirection: 'column',
   backgroundColor: '#48BBEC',
   borderColor: '#48BBEC',
   borderWidth: 1,
   borderRadius: 8,
-  marginBottom: 10,
   alignSelf: 'center',
   justifyContent: 'center'
 },
+button_small: {
+  height: 36,
+  width: 36,
+  padding: 4,
+  marginTop: 10,
+  //flex: 1,
+  //flexDirection: 'column',
+  backgroundColor: '#8F8F8F',
+  borderColor: '#48BBEC',
+  borderWidth: 1,
+  borderRadius: 8,
+  marginBottom: 10,
+},
+button_screen: {
+  height: 36,
+  width: 74,
+  padding: 4,
+  marginTop: 10,
+  //flex: 1,
+  //flexDirection: 'column',
+  backgroundColor: '#FFFFFF',
+  borderColor: '#48BBEC',
+  borderWidth: 1,
+  borderRadius: 8,
+  marginBottom: 10,
+  alignSelf: 'center',
+  justifyContent: 'center',
+}
 
 
 });
