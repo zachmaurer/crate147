@@ -22,6 +22,7 @@ import ProductOffers from './ProductOffers.js';
 
 var orders = require('../assets/orders.json');
 var catalog = require('../assets/catalog.json');
+var crate = require('../assets/crate.json');
 
 var catalog_imgs = {
 	"gouda.jpg" : require('../assets/catalog_imgs/gouda.jpg'),
@@ -47,6 +48,7 @@ class Shop extends Component {
       const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
       this.state['orderData'] = ds.cloneWithRows(orders);
       this.state['catalogData'] = ds.cloneWithRows(catalog);
+      this.state['crateData'] = ds.cloneWithRows(crate);
       //this.setState({page: "orders"});
       //console.warn(JSON.stringify(props.appState));
     }
@@ -120,6 +122,29 @@ class Shop extends Component {
    	);
     }
 
+    renderInvoice(data) {
+      var itemTotal = data.quantity * data.price;
+      itemTotal = itemTotal.toFixed(2);
+      return (
+        <View style={{flex:1}}>
+          <View style={{alignItems: 'flex-start', flexDirection: 'row'}}> 
+            <View style={{flex: 1, flexDirection: 'column'}}>
+              <Text style={styles.order_text_h2}>{data.name}</Text>    
+            </View>
+            <View style={{flex: 1, flexDirection: 'column'}}>
+              <Text style={styles.order_text_h2}>{data.priceDisplay}</Text>    
+            </View>
+            <View style={{flex: 1, flexDirection: 'column'}}>
+              <Text style={styles.order_text_h2}>{data.quantity}</Text>    
+            </View>
+            <View style={{flex: 1, flexDirection: 'column'}}>
+              <Text style={styles.order_text_h2}>{itemTotal}</Text>    
+            </View>
+          </View>
+        </View>
+      );
+    }
+
 
 
    render() {
@@ -152,7 +177,27 @@ class Shop extends Component {
           case 'crate':
 	        return (
             <View style={styles.container}>
-              <Text>This is the Crate page.</Text>
+              <View style={{alignItems: 'center', justifyContent: 'center', flexDirection: 'row'}}>
+                <Text style={styles.order_text_title}>Crate Summary</Text>
+              </View>
+              <View style={{alignItems: 'center', flexDirection: 'row'}}> 
+              <View style={{flex: 1, flexDirection: 'column'}}>
+                <Text style={styles.order_text_h1_bold}>Item</Text>    
+              </View>
+              <View style={{flex: 1, flexDirection: 'column'}}>
+                <Text style={styles.order_text_h1_bold}>Unit Price</Text>    
+              </View>
+              <View style={{flex: 1, flexDirection: 'column'}}>
+                <Text style={styles.order_text_h1_bold}>Qnt.</Text>    
+              </View>
+              <View style={{flex: 1, flexDirection: 'column'}}>
+                <Text style={styles.order_text_h1_bold}>Item Total</Text>    
+              </View>
+            </View>
+              <ListView
+                dataSource={this.state.crateData}
+                renderRow={(rowData) => this.renderInvoice(rowData)}
+              />
 	 	
     <Tabs selected={this.state.page} style={{backgroundColor:'white'}}
                 selectedStyle={{color:'red'}} onSelect={el=>this.setState({page:el.props.name, searchText: ""})}>
@@ -205,10 +250,28 @@ li_container: {
     flexDirection: 'column',
     alignItems: 'center',
   },
+  order_text_title: {
+    paddingTop: 20,
+    marginLeft: 12,
+    fontSize: 26,
+    //flex:1,
+    //flexDirection: 'row',
+    alignSelf: 'center',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   order_text_h1: {
     paddingTop: 20,
     marginLeft: 12,
     fontSize: 16,
+    //flex:1,
+    //flexDirection: 'row',
+  },
+  order_text_h1_bold: {
+    paddingTop: 20,
+    marginLeft: 12,
+    fontSize: 16,
+    fontWeight: 'bold',
     //flex:1,
     //flexDirection: 'row',
   },

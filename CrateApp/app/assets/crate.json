@@ -1,0 +1,65 @@
+[
+{
+"id": 1,
+"name": "Early Girl Tomatoes",
+"priceDisplay": "$4.10/lb",
+"price":4.10,
+"quantity":5,
+"farm":"Rochester Farms",
+},
+
+{
+"id": 2,
+"name": "Strawberries",
+"priceDisplay": "$6.17/lb",
+"price":4.10,
+"quantity":7,
+"farm":"Rochester Farms",
+},
+
+{
+"id": 3,
+"name": "Gouda",
+"priceDisplay": "$12.00/lb",
+"price":12.00,
+"quantity":5,
+"farm":"Del'Orro Farms",
+},
+
+{
+"id": 4,
+"name": "Whole Milk",
+"type": "Organic",
+"priceDisplay": "$3.00/gallon",
+"price":3.00,
+"quantity":2,
+"farm":"Del'Orro Farms",
+},
+{
+"id": 5,
+"name": "2% Milk",
+"type": "Organic",
+"priceDisplay": "$3.00/gallon",
+"price":3.00,
+"quantity":4,
+"farm":"Del'Orro Farms",
+},
+{
+"id": 6,
+"name": "Skim Milk",
+"type": "Organic",
+"priceDisplay": "$3.00/gallon",
+"price":3.00,
+"quantity":2,
+"farm":"Del'Orro Farms",
+},
+{
+"id": 7,
+"name": "Lactose-Free Milk",
+"type": "Standard",
+"priceDisplay": "$3.00/gallon",
+"price":3.00,
+"quantity":3,
+"farm":"Del'Orro Farms",
+}
+]
