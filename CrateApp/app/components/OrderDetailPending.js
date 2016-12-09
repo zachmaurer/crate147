@@ -10,7 +10,6 @@ import ReactNative, {
   TouchableHighlight,
   TextInput,
   ListView,
-  BackAndroid,
 } from 'react-native';
 
 var orders = require('../assets/orders.json');
@@ -79,16 +78,13 @@ class OrderDetailPending extends Component {
     return true;
   }
 
-  componentDidMount() {
-    BackAndroid.addEventListener('hardwareBackPress', this.onBackPress.bind(this));
-  }
 
 	       renderCatalogLi(data) {
     	return (
 
     		<View>
 		<View style={{flex:1, alignItems: 'center', flexDirection: 'row'}}>	
-    		<Image source={catalog_imgs[data.picture]} style={styles.catalog_photo}/>
+   <Image source={catalog_imgs[data.picture]} style={styles.catalog_photo}/>
     		<View style={{flex: 1, flexDirection: 'column'}}>
     		<Text style={styles.order_text_h1}>{data.name} ({data.type})</Text>	
     		</View>
@@ -113,7 +109,7 @@ class OrderDetailPending extends Component {
 		return(
 			<View style={styles.container}>
 			<View style={{alignItems: 'center', flexDirection: 'row'}}>	
-			<Image source={company_imgs[order.id]} style={styles.product_image}/>
+			
 			<Text style={styles.h1}> Client: {order.client} </Text>
 
 			</View>	
@@ -151,8 +147,9 @@ class OrderDetailPending extends Component {
             
   </View>
             <View>
-        			  <Image source={client_maps[order.id]} style={styles.map}/>
+        			
                 </View>
+
                 </View>
 		
 		);
@@ -192,9 +189,9 @@ li_container: {
     //flexDirection: 'row',
   },
    h2: {
-    paddingLeft: 25,
-    paddingRight: 10,
-    fontSize: 16,
+    paddingLeft: 5,
+    paddingRight: 5,
+    fontSize: 14,
     //flex:2,
     flexDirection: 'row',
   },
@@ -208,8 +205,10 @@ li_container: {
   },
   available: {
      color: 'green',
+     fontSize: 8,
   },
   catalog_photo: {
+    flex:1,
     marginLeft: 10,
     height: 40,
     width: 40,
@@ -242,16 +241,16 @@ li_container: {
     alignItems: 'center',
   },
   order_text_h1: {
-    paddingTop: 20,
-    marginLeft: 12,
-    fontSize: 16,
+    paddingTop: 10,
+    marginLeft: 4,
+    fontSize: 14,
     //flex:1,
     //flexDirection: 'row',
   },
    order_text_h2: {
-    paddingLeft: 25,
-    paddingRight: 10,
-    fontSize: 14,
+     paddingLeft: 4,
+    // paddingRight: 10,
+    fontSize: 8,
     //flex:2,
     flexDirection: 'row',
   },
@@ -264,11 +263,11 @@ li_container: {
        flexDirection: 'row',
   },
    map: {
-    height: 200,
    flex: 1,
     	resizeMode: 'contain',
   },
    company_photo: {
+    flex:1,
     marginLeft: 10,
     height: 40,
     width: 80,
@@ -282,13 +281,13 @@ li_container: {
     backgroundColor: '#8E8E8E',
   },
   buttonText: {
-  fontSize: 24,
+  fontSize: 14,
   color: 'white',
   alignSelf: 'center'
 },
 button1: {
-  height: 50,
-  width: 200,
+  height: 35,
+  width: 150,
   padding: 4,
   margin: 5,
   backgroundColor: '#48BBEC',
@@ -296,10 +295,11 @@ button1: {
   borderWidth: 1,
   borderRadius: 8,
   marginBottom: 10,
+  justifyContent: 'center',
 },
 button2: {
-  height: 50,
-  width: 200,
+  height: 35,
+  width: 150,
   padding: 4,
   margin: 5,
   backgroundColor: '#E03142',
@@ -307,6 +307,7 @@ button2: {
   borderWidth: 1,
   borderRadius: 8,
   marginBottom: 10,
+   justifyContent: 'center',
 },
 });
 

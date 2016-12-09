@@ -565,14 +565,14 @@ li_container: {
     borderRadius: 2,
   },
   segmentedTab: {
-    width: 400,
+    width: 300,
     height: 50,
     justifyContent: 'center',
     alignItems: 'center',    
   },
   tabsContainerStyle : {
-    width: 400,
-    height: 80,
+    width: 250,
+    height: 70,
     paddingTop: 20,
     paddingBottom: 20,
   },

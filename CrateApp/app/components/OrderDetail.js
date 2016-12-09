@@ -240,9 +240,11 @@ li_container: {
        flexDirection: 'row',
   },
    map: {
-    height: 200,
-    flex: 1,
-    	resizeMode: 'cover',
+  height:150,
+    width: 350,
+    alignItems: 'center',
+        flexDirection: 'row',
+    resizeMode: 'cover',
   },
    company_photo: {
     marginLeft: 10,

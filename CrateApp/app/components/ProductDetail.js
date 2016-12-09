@@ -165,9 +165,10 @@ li_container: {
        flexDirection: 'row',
   },
   sparklines: {
-    height:200,
-    width: 400,
+    height:150,
+    width: 300,
     alignItems: 'center',
+        flexDirection: 'row',
     resizeMode: 'stretch',
   }
 });
