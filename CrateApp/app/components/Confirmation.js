@@ -64,7 +64,7 @@ class Confirmation extends Component {
       <View style={styles.container}>
         <View style={{alignItems: 'center'}}>
           <View style={{marginTop:100}}></View>
-          <Text style={styles.order_text_title}>Order Confirmed!</Text>
+          <Text style={styles.order_text_title}>Order Placed!</Text>
           <View style={{marginTop:32}}></View>
           <Image source={success_icon} style={styles.large_icon}/>
           <View style={{marginTop:20}}></View>
