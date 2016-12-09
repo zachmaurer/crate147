@@ -13,7 +13,9 @@ import ReactNative, {
 } from 'react-native';
 
 import Hr from 'react-native-hr';
-import Confirmation from './Confirmation.js';
+import Shop from './Shop.js';
+
+var success_icon = require('../.././app/assets/success-icon-19.png');
 
 var catalog_imgs = {
 	"gouda.jpg" : require('../assets/catalog_imgs/gouda.jpg'),
@@ -33,12 +35,11 @@ var company_imgs = {
 
 
 
-class Payment extends Component {
+class Confirmation extends Component {
 
   constructor(props) {
       super(props);
       this.state = props.route.appState;
-      this.state["totalAmt"] = props.route.totalAmt;
     }
 
 
@@ -50,10 +51,10 @@ class Payment extends Component {
     BackAndroid.addEventListener('hardwareBackPress', this.onBackPress.bind(this));
   }
 
-  confirmOrder() {
+  returnToShop(){
     this.props.navigator.replace({
-      title: "Confirmation Page",
-      component: Confirmation,
+      title: "Crate",
+      component: Shop,
       appState: this.state,
     });
   }
@@ -61,59 +62,18 @@ class Payment extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <ScrollView>
-          <View style={{alignItems: 'center', justifyContent: 'center', flexDirection: 'row'}}>
-            <Text style={styles.order_text_title}>Checkout</Text>
-          </View>
-          <View style={{alignItems: 'center', justifyContent: 'center', flexDirection: 'row'}}>
-            <Text style={styles.order_text_h1_bold}>Your Total: ${this.state.totalAmt}</Text>
-          </View>
-          <Hr lineColor='#8E8E8E' />
-          <View style={{flexDirection: 'row', marginBottom: 20,}}></View>
-          <View style={{alignItems: 'center', justifyContent: 'center', flexDirection: 'row',}}>
-            <Text style={styles.order_text_h2}>Pay immediately with your</Text>
-          </View>
-          <View style={{alignItems: 'center'}}>
-            <TouchableHighlight style={styles.button}
-              underlayColor='#99d9f4'
-              onPress={() => this.confirmOrder()}>
-              <Text style={styles.buttonText}>Stripe Account</Text>
-            </TouchableHighlight>
-          </View>
-          <View style={{alignItems: 'center', justifyContent: 'center', flexDirection: 'row'}}>
-            <Text style={styles.order_text_h2}>or</Text>
-          </View>
-          <View style={{flexDirection: 'row'}}>
-            <View style={{flex: 0.5, flexDirection: 'column'}}>
-              <Text style={styles.order_text_h1}>Pay with Credit Card</Text>
-            </View>
-            <View style={{flex: 0.5, alignItems: 'flex-end', marginRight: 15, flexDirection: 'column', paddingTop: 20,}}>
-              <Image source={company_imgs[5]} style={{width: 150,}} />
-            </View>
-          </View>
-          <View style={{flexDirection: 'row'}}>
-            <TextInput
-              style={styles.userInput}
-              placeholder='Credit Card Number'/>
-          </View>
-          <View style={{flexDirection: 'row'}}>
-            <TextInput  secureTextEntry={true}
-              style={styles.userInput}
-              placeholder='Security Code'/>
-          </View>
-          <View style={{flexDirection: 'row'}}>
-            <TextInput
-              style={styles.userInput}
-              placeholder='Card Expiration Date (mm/yyyy)'/>
-          </View>
-          <View style={{alignItems: 'center'}}>
-            <TouchableHighlight style={styles.button}
-              underlayColor='#99d9f4'
-              onPress={() => this.confirmOrder()}>
-              <Text style={styles.buttonText}>Place Order</Text>
-            </TouchableHighlight>
-          </View>
-        </ScrollView>
+        <View style={{alignItems: 'center'}}>
+          <View style={{marginTop:100}}></View>
+          <Text style={styles.order_text_title}>Order Confirmed!</Text>
+          <View style={{marginTop:32}}></View>
+          <Image source={success_icon} style={styles.large_icon}/>
+          <View style={{marginTop:20}}></View>
+          <TouchableHighlight style={styles.button}
+            underlayColor='#99d9f4'
+            onPress={() => this.returnToShop()}>
+            <Text style={styles.buttonText}>Return</Text>
+          </TouchableHighlight>
+        </View>
       </View>   
     );
   }
@@ -138,7 +98,7 @@ const styles = StyleSheet.create({
   order_text_title: {
     paddingTop: 20,
     marginLeft: 12,
-    fontSize: 26,
+    fontSize: 40,
     //flex:1,
     //flexDirection: 'row',
     alignSelf: 'center',
@@ -189,6 +149,14 @@ const styles = StyleSheet.create({
     fontSize: 16,
     //flex:2,
     flexDirection: 'row',
+  },
+  large_icon: {
+    alignSelf:'center',
+    height: 120,
+    width: 120,
+    borderRadius: 10,
+    resizeMode: 'cover',
+       flexDirection: 'row',
   },
   catalog_photo: {
     marginLeft: 10,
@@ -261,4 +229,4 @@ const styles = StyleSheet.create({
 
 });
 
-module.exports = Payment;
+module.exports = Confirmation;

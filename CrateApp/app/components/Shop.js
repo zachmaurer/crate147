@@ -92,7 +92,7 @@ export default class Shop extends Component {
           title: "Payment",
           component: Payment,
           totalAmt: "170.40",
-          //appState: this.state,
+          appState: this.state,
         });
     }
 
