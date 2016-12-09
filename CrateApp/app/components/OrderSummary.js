@@ -30,6 +30,12 @@ var company_imgs = {
 	2 : require('../assets/company_imgs/3.jpg'),
 };
 
+var farm_imgs = {
+  1 : require('../assets/farm_imgs/rochester.jpg'),
+  2 : require('../assets/farm_imgs/delorro.jpg'),
+  /*9 : require('../assets/farm_imgs/4-stars.jpg'),*/
+};
+
 
 
 class OrderSummary extends Component {
@@ -37,6 +43,11 @@ class OrderSummary extends Component {
     super(props);
     this.state = props.route.appState;
     this.state['farmID'] = props.route.farmID;
+    this.state['product'] = props.route.product;
+    var _this = this;
+    this.is_in_season = (function(){
+      return _this.state.product.season ? "Yes" : "No";
+    })();
   }
 
   onBackPress(){
@@ -50,11 +61,31 @@ class OrderSummary extends Component {
 
 
   render() {
+    var id = this.state.farmID;
+    function withProductID(e) {
+      return e.id == id;
+    }
+    var farm = farms.find(withProductID);
     return(
       <View style={styles.container}>
       <View style={{alignItems: 'center', flexDirection: 'row'}}> 
-      <Text>{this.farmID}</Text>
-      </View> 
+        <Image source={farm_imgs[this.state.farmID]} style={styles.product_image}/>
+        <View style={{flexDirection: 'column'}}>
+          <Text style={styles.order_text_title}>  {farm.name} </Text>
+          <Text style={styles.order_text_h2}>Customer Rating: {farm.rating}</Text>
+        </View>
+      </View>
+      <Text style={styles.order_text_h1}>Order Information</Text>
+      <Text style={styles.order_text_h2}>{this.state.product.name}</Text>
+      <Text style={styles.order_text_h2}>{this.state.product.type} {this.state.product.category}</Text>
+      <Text style={styles.order_text_h2}>In Season: {this.is_in_season}</Text>
+      <Text style={styles.order_text_h2}>Price: {this.state.product.price} </Text>
+      <View style={{alignItems: 'center'}}>
+        <TouchableHighlight style={styles.button}
+          underlayColor='#99d9f4'>
+          <Text style={styles.buttonText}>Add to Cart</Text>
+        </TouchableHighlight>
+      </View>
       </View>
     );
   }
@@ -89,10 +120,18 @@ li_container: {
     flexDirection: 'column',
     alignItems: 'center',
   },
+  order_text_title: {
+    paddingTop: 20,
+    marginLeft: 12,
+    fontSize: 26,
+    //flex:1,
+    //flexDirection: 'row',
+    justifyContent: 'center',
+  },
   order_text_h1: {
     paddingTop: 20,
     marginLeft: 12,
-    fontSize: 16,
+    fontSize: 18,
     //flex:1,
     //flexDirection: 'row',
   },
@@ -142,6 +181,27 @@ li_container: {
     backgroundColor: '#FFFFFF',
     borderRadius: 2,
   },
+  buttonText: {
+  fontSize: 18,
+  color: 'white',
+  alignSelf: 'center'
+},
+button: {
+  height: 36,
+  width: 250,
+  padding: 4,
+  margin: 5,
+  marginTop: 40,
+  //flex: 1,
+  //flexDirection: 'column',
+  backgroundColor: '#48BBEC',
+  borderColor: '#48BBEC',
+  borderWidth: 1,
+  borderRadius: 8,
+  marginBottom: 10,
+  alignSelf: 'center',
+  justifyContent: 'center'
+},
 
 
 });

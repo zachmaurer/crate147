@@ -47,7 +47,6 @@ class ProductOffers extends Component {
         return e.id == id;
       }
       var priceList = prices.find(withProductID).price;
-      console.log(priceList);
       return priceList;
     })();
     this.state['priceData'] = this.ds.cloneWithRows(priceList);
@@ -62,18 +61,19 @@ class ProductOffers extends Component {
     BackAndroid.addEventListener('hardwareBackPress', this.onBackPress.bind(this));
   }
 
-  viewSummary(id) {
+  viewSummary(id, product) {
         this.props.navigator.push({
           title: "Summary of Order",
           component: OrderSummary,
           farmID: id,
+          product: product,
           appState: this.state,
         });
   }
 
-  renderPricesLi(data) {
+  renderPricesLi(data, product) {
       return (
-        <TouchableHighlight onPress={() => this.viewSummary(data.farmID)}>
+        <TouchableHighlight onPress={() => this.viewSummary(data.farmID, product)}>
         <View>
           <View style={{flex:1, alignItems: 'center', flexDirection: 'row'}}>
             <View style={{flex: 1, flexDirection: 'column'}}>
@@ -102,7 +102,7 @@ class ProductOffers extends Component {
       </View>
       <ListView
         dataSource={this.state.priceData}
-        renderRow={(rowData) => this.renderPricesLi(rowData)}
+        renderRow={(rowData) => this.renderPricesLi(rowData, product)}
         renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator}/>}
       />
       </View>

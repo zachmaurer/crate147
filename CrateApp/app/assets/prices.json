@@ -1,0 +1,137 @@
+[
+{
+"id": 1,
+"name": "Early Girl Tomatoes",
+"price":
+	{
+		"0": 
+		{
+			"farmID":"1",
+			"farmName":"Rochester Farms",
+			"unitPrice":"$4.10/lb",
+		},
+		"1":
+		{
+			"farmID":"2",
+			"farmName":"Del'Orro Farms",
+			"unitPrice":"$6.02/lb",
+		},
+	},
+},
+
+{
+"id": 2,
+"name": "Strawberries",
+"price":
+	{
+		"0": 
+		{
+			"farmID":"1",
+			"farmName":"Rochester Farms",
+			"unitPrice":"$6.17/lb",
+		},
+		"1":
+		{
+			"farmID":"2",
+			"farmName":"Del'Orro Farms",
+			"unitPrice":"$6.92/lb",
+		},
+	},
+},
+
+
+{
+"id": 3,
+"name": "Gouda",
+"price":
+	{
+		"0": 
+		{
+			"farmID":"2",
+			"farmName":"Del'Orro Farms",
+			"unitPrice":"$12.00/lb",
+		},
+		"1":
+		{
+			"farmID":"1",
+			"farmName":"Rochester Farms",
+			"unitPrice":"$13.90/lb",
+		},
+	},
+},
+
+{
+"id": 4,
+"name": "Whole Milk",
+"price":
+	{
+		"0": 
+		{
+			"farmID":"2",
+			"farmName":"Del'Orro Farms",
+			"unitPrice":"$3.00/gallon",
+		},
+		"1":
+		{
+			"farmID":"1",
+			"farmName":"Rochester Farms",
+			"unitPrice":"$3.26/gallon",
+		},
+	},
+},
+
+{
+"id": 5,
+"name": "2% Milk",
+"price":
+	{
+		"0": 
+		{
+			"farmID":"2",
+			"farmName":"Del'Orro Farms",
+			"unitPrice":"$3.00/gallon",
+		},
+		"1":
+		{
+			"farmID":"1",
+			"farmName":"Rochester Farms",
+			"unitPrice":"$3.26/gallon",
+		},
+	},
+},
+
+{
+"id": 6,
+"name": "Skim Milk",
+"price":
+{
+		"0": 
+		{
+			"farmID":"2",
+			"farmName":"Del'Orro Farms",
+			"unitPrice":"$3.00/gallon",
+		},
+	},
+},
+
+{
+"id": 7,
+"name": "Lactose-Free Milk",
+"price":
+{
+		"0": 
+		{
+			"farmID":"1",
+			"farmName":"Rochester Farms",
+			"unitPrice":"$2.95/gallon",
+		},
+		"1":
+		{
+			"farmID":"2",
+			"farmName":"Del'Orro Farms",
+			"unitPrice":"$3.00/gallon",
+		},
+	},
+}
+
+]
