@@ -20,6 +20,7 @@ import Tabs from 'react-native-tabs';
 import Hr from 'react-native-hr';
 import ProductOffers from './ProductOffers.js';
 import RestOrderDetail from './RestOrderDetail.js';
+import Payment from './Payment.js';
 
 
 var restorders = require('../assets/restorders.json');
@@ -56,7 +57,7 @@ class Shop extends Component {
       //console.warn(JSON.stringify(props.appState));
 
       this.state['restorderData'] = ds.cloneWithRows(restorders);
-      console.log(this.state.crateData); 
+       
     }
 
 
@@ -82,6 +83,15 @@ class Shop extends Component {
           title: "Farms Offering Product",
           component: ProductOffers,
           productID: id,
+          appState: this.state,
+        });
+    }
+
+    enterPayment() {
+        this.props.navigator.push({
+          title: "Payment",
+          component: Payment,
+          totalAmt: this.state.crateData._dataBlob.s1[7].fullTotal,
           appState: this.state,
         });
     }
@@ -425,8 +435,9 @@ class Shop extends Component {
                 {/*Place Order Button*/}
                 <View style={{alignItems: 'center'}}>
                   <TouchableHighlight style={styles.button}
-                    underlayColor='#99d9f4'>
-                    <Text style={styles.buttonText}>Place Order</Text>
+                    underlayColor='#99d9f4'
+                    onPress={() => this.enterPayment()}>
+                    <Text style={styles.buttonText}>To Checkout</Text>
                   </TouchableHighlight>
                 </View>
 
