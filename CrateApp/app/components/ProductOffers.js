@@ -32,6 +32,12 @@ var company_imgs = {
 	2 : require('../assets/company_imgs/3.jpg'),
 };
 
+var farm_imgs = {
+  1 : require('../assets/farm_imgs/rochester.jpg'),
+  2 : require('../assets/farm_imgs/delorro.jpg'),
+  /*9 : require('../assets/farm_imgs/4-stars.jpg'),*/
+};
+
 
 
 class ProductOffers extends Component {
@@ -74,11 +80,21 @@ class ProductOffers extends Component {
   renderPricesLi(data, product) {
       return (
         <TouchableHighlight onPress={() => this.viewSummary(data.farmID, product)}>
-        <View>
-          <View style={{flex:1, alignItems: 'center', flexDirection: 'row'}}>
-            <View style={{flex: 1, flexDirection: 'column'}}>
-              <Text style={styles.order_text_h1}>{data.farmName}</Text>
+        <View style={{flex:1, flexDirection:'row'}}>
+          <View style={{flexDirection:'column', flex:0.2}}>
+            <Image source={farm_imgs[data.farmID]} style={styles.product_image_small} />
+          </View>
+          <View style={{flexDirection:'column', flex:0.55}}>
+            <View style={{flex:1, alignItems: 'center', flexDirection: 'row'}}>
+              <View style={{flex: 1, flexDirection: 'column'}}>
+                <Text style={styles.order_text_h1}>{data.farmName}</Text>
+              </View>
             </View>
+            <View style={{flex:1, alignItems: 'center', flexDirection: 'row'}}>
+              <Text style={styles.order_text_h3}>{data.blurb}</Text>
+            </View>
+          </View>
+          <View style={{flexDirection:'column', flex:0.25, marginTop: 30}}>
             <Text style={styles.order_text_h2}>{data.unitPrice}</Text>
           </View>
         </View>
@@ -100,6 +116,7 @@ class ProductOffers extends Component {
         <Image source={catalog_imgs[product.picture]} style={styles.product_image}/>
         <Text style={styles.order_text_h1}> {product.name} </Text>
       </View>
+      <View style={{marginTop:20}}></View>
       <ListView
         dataSource={this.state.priceData}
         renderRow={(rowData) => this.renderPricesLi(rowData, product)}
@@ -131,6 +148,18 @@ const styles = StyleSheet.create({
   borderRadius: 20,
   resizeMode: 'cover',
   paddingLeft: 10,
+  marginLeft: 5,
+  marginTop: 5,
+  },
+  product_image_small: {
+  width: 70,
+  height: 70,
+  borderRadius: 10,
+  resizeMode: 'cover',
+  paddingLeft: 10,
+  marginLeft: 10,
+  marginTop: 5,
+  marginBottom: 5,
   },
 li_container: {
     flex: 1,
@@ -149,6 +178,13 @@ li_container: {
     paddingLeft: 25,
     paddingRight: 10,
     fontSize: 14,
+    //flex:2,
+    flexDirection: 'row',
+  },
+   order_text_h3: {
+    paddingLeft: 25,
+    paddingRight: 10,
+    fontSize: 12,
     //flex:2,
     flexDirection: 'row',
   },

@@ -96,7 +96,7 @@ class OrderSummary extends Component {
         <TouchableHighlight style={styles.button}
           underlayColor='#99d9f4'
           onPress={() => this.returnToShop()}>
-          <Text style={styles.buttonText}>Add to Cart</Text>
+          <Text style={styles.buttonText}>Add to Crate</Text>
         </TouchableHighlight>
       </View>
       </View>
@@ -126,6 +126,8 @@ const styles = StyleSheet.create({
   borderRadius: 20,
   resizeMode: 'cover',
   paddingLeft: 10,
+  marginLeft: 5,
+  marginTop: 5,
   },
 li_container: {
     flex: 1,

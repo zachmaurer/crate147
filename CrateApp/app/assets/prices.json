@@ -9,12 +9,14 @@
 			"farmID":"1",
 			"farmName":"Rochester Farms",
 			"unitPrice":"$4.10/lb",
+			"blurb":"Only the highest quality tomatoes at the most affordable price.",
 		},
 		"1":
 		{
 			"farmID":"2",
 			"farmName":"Del'Orro Farms",
 			"unitPrice":"$6.02/lb",
+			"blurb":"Fresh, organic, and delivered straight to you.",
 		},
 	},
 },
@@ -29,12 +31,14 @@
 			"farmID":"1",
 			"farmName":"Rochester Farms",
 			"unitPrice":"$6.17/lb",
+			"blurb":"Known for their signature sweetness, Rochester strawberries are a favorite among our partners.",
 		},
 		"1":
 		{
 			"farmID":"2",
 			"farmName":"Del'Orro Farms",
 			"unitPrice":"$6.92/lb",
+			"blurb":"Fresh, organic, and delivered straight to you.",
 		},
 	},
 },
@@ -50,12 +54,14 @@
 			"farmID":"2",
 			"farmName":"Del'Orro Farms",
 			"unitPrice":"$12.00/lb",
+			"blurb":"Fifty-two years of experience making the best cheese and dairy products.",
 		},
 		"1":
 		{
 			"farmID":"1",
 			"farmName":"Rochester Farms",
 			"unitPrice":"$13.90/lb",
+			"blurb":"Extra matured cheese with a mild taste and sweet finish.",
 		},
 	},
 },
@@ -69,13 +75,15 @@
 		{
 			"farmID":"2",
 			"farmName":"Del'Orro Farms",
-			"unitPrice":"$3.00/gallon",
+			"unitPrice":"$3.00/gal",
+			"blurb":"For three generations, we've been known for our unmatched, quality milk products.",
 		},
 		"1":
 		{
 			"farmID":"1",
 			"farmName":"Rochester Farms",
-			"unitPrice":"$3.26/gallon",
+			"unitPrice":"$3.26/gal",
+			"blurb":"Quality milk from free-range cows.",
 		},
 	},
 },
@@ -89,13 +97,15 @@
 		{
 			"farmID":"2",
 			"farmName":"Del'Orro Farms",
-			"unitPrice":"$3.00/gallon",
+			"unitPrice":"$3.00/gal",
+			"blurb":"For three generations, we've been known for our unmatched, quality milk products.",
 		},
 		"1":
 		{
 			"farmID":"1",
 			"farmName":"Rochester Farms",
-			"unitPrice":"$3.26/gallon",
+			"unitPrice":"$3.26/gal",
+			"blurb":"Quality milk from free-range cows.",
 		},
 	},
 },
@@ -109,7 +119,8 @@
 		{
 			"farmID":"2",
 			"farmName":"Del'Orro Farms",
-			"unitPrice":"$3.00/gallon",
+			"unitPrice":"$3.00/gal",
+			"blurb":"Absolutely unmatched.",
 		},
 	},
 },
@@ -123,13 +134,15 @@
 		{
 			"farmID":"1",
 			"farmName":"Rochester Farms",
-			"unitPrice":"$2.95/gallon",
+			"unitPrice":"$2.95/gal",
+			"blurb":"Quality milk at a great price.",
 		},
 		"1":
 		{
 			"farmID":"2",
 			"farmName":"Del'Orro Farms",
-			"unitPrice":"$3.00/gallon",
+			"unitPrice":"$3.00/gal",
+			"blurb":"For three generations, we've been known for our unmatched, quality milk products.",
 		},
 	},
 }
