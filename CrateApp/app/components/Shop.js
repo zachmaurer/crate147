@@ -91,8 +91,8 @@ export default class Shop extends Component {
         this.props.navigator.push({
           title: "Payment",
           component: Payment,
-          totalAmt: this.state.crateData._dataBlob.s1[7].fullTotal,
-          appState: this.state,
+          totalAmt: "170.40",
+          //appState: this.state,
         });
     }
 

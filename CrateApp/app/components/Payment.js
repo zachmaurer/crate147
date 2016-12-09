@@ -12,12 +12,7 @@ import ReactNative, {
   BackAndroid,
 } from 'react-native';
 
-
-
-var restorders = require('../assets/restorders.json');
-var orders = require('../assets/orders.json');
-var catalog = require('../assets/catalog.json');
-var crate = require('../assets/crate.json');
+import Hr from 'react-native-hr';
 
 var catalog_imgs = {
 	"gouda.jpg" : require('../assets/catalog_imgs/gouda.jpg'),
@@ -30,7 +25,10 @@ var company_imgs = {
 	1 : require('../assets/company_imgs/1.jpg'),
 	3 : require('../assets/company_imgs/2.jpg'),
 	2 : require('../assets/company_imgs/3.jpg'),
+  4 : require('../assets/company_imgs/powered_by_stripe.png'),
+  5 : require('../assets/company_imgs/Credit-Card-Logos.jpg'),
 };
+
 
 
 
@@ -38,8 +36,10 @@ class Payment extends Component {
 
   constructor(props) {
       super(props);
-      this.state = props.route.appState;
-      
+      //this.state = props.route.appState;
+      this.state={
+        totalAmt: props.route.totalAmt,
+      };
     }
 
 
@@ -51,10 +51,70 @@ class Payment extends Component {
     BackAndroid.addEventListener('hardwareBackPress', this.onBackPress.bind(this));
   }
 
+  confirmOrder() {
+    this.props.navigator.replace({
+      title: "Confirmation Page",
+      component: Confirmation,
+      appState: this.state,
+    });
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <Text>This is the Payment page.</Text>
+        <ScrollView>
+          <View style={{alignItems: 'center', justifyContent: 'center', flexDirection: 'row'}}>
+            <Text style={styles.order_text_title}>Checkout</Text>
+          </View>
+          <View style={{alignItems: 'center', justifyContent: 'center', flexDirection: 'row'}}>
+            <Text style={styles.order_text_h1_bold}>Your Total: ${this.state.totalAmt}</Text>
+          </View>
+          <Hr lineColor='#8E8E8E' />
+          <View style={{flexDirection: 'row', marginBottom: 20,}}></View>
+          <View style={{alignItems: 'center', justifyContent: 'center', flexDirection: 'row',}}>
+            <Text style={styles.order_text_h2}>Pay immediately with your</Text>
+          </View>
+          <View style={{alignItems: 'center'}}>
+            <TouchableHighlight style={styles.button}
+              underlayColor='#99d9f4'
+              onPress={() => this.confirmOrder()}>
+              <Text style={styles.buttonText}>Stripe Account</Text>
+            </TouchableHighlight>
+          </View>
+          <View style={{alignItems: 'center', justifyContent: 'center', flexDirection: 'row'}}>
+            <Text style={styles.order_text_h2}>or</Text>
+          </View>
+          <View style={{flexDirection: 'row'}}>
+            <View style={{flex: 0.5, flexDirection: 'column'}}>
+              <Text style={styles.order_text_h1}>Pay with Credit Card</Text>
+            </View>
+            <View style={{flex: 0.5, alignItems: 'flex-end', marginRight: 15, flexDirection: 'column', paddingTop: 20,}}>
+              <Image source={company_imgs[5]} style={{width: 150,}} />
+            </View>
+          </View>
+          <View style={{flexDirection: 'row'}}>
+            <TextInput
+              style={styles.userInput}
+              placeholder='Credit Card Number'/>
+          </View>
+          <View style={{flexDirection: 'row'}}>
+            <TextInput  secureTextEntry={true}
+              style={styles.userInput}
+              placeholder='Security Code'/>
+          </View>
+          <View style={{flexDirection: 'row'}}>
+            <TextInput
+              style={styles.userInput}
+              placeholder='Card Expiration Date (mm/yyyy)'/>
+          </View>
+          <View style={{alignItems: 'center'}}>
+            <TouchableHighlight style={styles.button}
+              underlayColor='#99d9f4'
+              onPress={() => this.confirmOrder()}>
+              <Text style={styles.buttonText}>Place Order</Text>
+            </TouchableHighlight>
+          </View>
+        </ScrollView>
       </View>   
     );
   }
@@ -76,12 +136,6 @@ const styles = StyleSheet.create({
   resizeMode: 'contain',
 
 }, 
-li_container: {
-    flex: 1,
-    padding: 12,
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
   order_text_title: {
     paddingTop: 20,
     marginLeft: 12,
@@ -124,7 +178,7 @@ li_container: {
     //flexDirection: 'row',
   },
    order_text_h2: {
-    paddingLeft: 25,
+    paddingLeft: 12,
     paddingRight: 10,
     fontSize: 14,
     //flex:2,
@@ -165,21 +219,6 @@ li_container: {
   important_text :{
     color: '#D52941'
   },
-   search_container: {
-    flex: 1,
-    padding: 8,
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#C1C1C1',
-  },
-  search_input: {
-    height: 42,
-    flex: 1,
-    paddingHorizontal: 8,
-    fontSize: 15,
-    backgroundColor: '#FFFFFF',
-    borderRadius: 2,
-  },
   header: {
     paddingTop: 20,
     marginLeft: 12,
@@ -195,7 +234,7 @@ li_container: {
     width: 250,
     padding: 4,
     margin: 5,
-    marginTop: 40,
+    marginTop: 20,
     //flex: 1,
     //flexDirection: 'column',
     backgroundColor: '#48BBEC',
@@ -206,6 +245,20 @@ li_container: {
     alignSelf: 'center',
     justifyContent: 'center'
   },
+  userInput: {
+  height: 40,
+  alignSelf:'stretch',
+  padding: 4,
+  margin: 10,
+  marginLeft: 10,
+  marginRight: 10,
+  flex: 1,
+  fontSize: 18,
+  borderWidth: 1,
+  borderColor: '#48BBEC',
+  borderRadius: 5,
+  //color: '#48BBEC'
+},
 
 });
 
