@@ -55,7 +55,7 @@ var profile_imgs = {
 var farm_imgs = {
   1 : require('../assets/farm_imgs/rochester.jpg'),
   2 : require('../assets/farm_imgs/delorro.jpg'),
-  /*9 : require('../assets/farm_imgs/4-stars.jpg'),*/
+  9 : require('../assets/farm_imgs/4-stars.jpg'),
 };
 
 
@@ -352,7 +352,14 @@ class Catalog extends Component {
               <Image source={farm_imgs[1]} style={styles.product_image}/>
               <View style={{flexDirection: 'column'}}>
                 <Text style={styles.order_text_title}>  Rochester Farms </Text>
-                <Text style={styles.order_text_h2}>Customer Rating: 4/5</Text>
+                <View style={{flexDirection:'row'}}>
+                  <View style={{flexDirection:'column', marginTop: 2}}>
+                    <Text style={styles.order_text_h2}>Customer Rating: </Text>
+                  </View>
+                  <View style={{flexDirection:'column', marginTop: 4}}>
+                    <Image source={farm_imgs[9]} style={{width: 75, height: 15, alignSelf:'flex-end'}}/>
+                  </View>
+                </View>
               </View>
             </View>
             <View style={{marginTop:10}}>
