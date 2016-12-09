@@ -242,37 +242,85 @@ class Shop extends Component {
           case 'crate':
 	        return (
             <View style={styles.container}>
-              <View style={{alignItems: 'center', justifyContent: 'center', flexDirection: 'row'}}>
-                <Text style={styles.order_text_title}>Crate Summary</Text>
-              </View>
-              <View style={{alignItems: 'center', flexDirection: 'row'}}> 
-              <View style={{flex: 0.57, flexDirection: 'column'}}>
-                <Text style={styles.order_text_h1_bold}>Item</Text>    
-              </View>
-              <View style={{flex: 0.18, flexDirection: 'column'}}>
-                <Text style={styles.order_text_h1_bold}>Qnt.</Text>    
-              </View>
-              <View style={{flex: 0.25, flexDirection: 'column'}}>
-                <Text style={styles.order_text_h1_bold}>Item Total</Text>    
-              </View>
-            </View>
-            <Hr lineColor='#8E8E8E' />
+              <ScrollView>
+                <View style={{alignItems: 'center', justifyContent: 'center', flexDirection: 'row'}}>
+                  <Text style={styles.order_text_title}>Crate Summary</Text>
+                </View>
+                <View style={{alignItems: 'center', flexDirection: 'row'}}> 
+                  <View style={{flex: 0.57, flexDirection: 'column'}}>
+                    <Text style={styles.order_text_h1_bold}>Item</Text>    
+                  </View>
+                  <View style={{flex: 0.18, flexDirection: 'column'}}>
+                    <Text style={styles.order_text_h1_bold}>Qnt.</Text>    
+                  </View>
+                  <View style={{flex: 0.25, flexDirection: 'column'}}>
+                    <Text style={styles.order_text_h1_bold}>Item Total</Text>    
+                  </View>
+                </View>
+                <Hr lineColor='#8E8E8E' />
 
-            <ListView
-              dataSource={this.state.crateData}
-              renderRow={(rowData) => this.renderInvoice(rowData)} />
-            
-            <View>
-              <Text>test</Text>
-            </View>
-	 	
-    <Tabs selected={this.state.page} style={{backgroundColor:'white'}}
+                {/*<ListView
+                  dataSource={this.state.crateData}
+                  renderRow={(rowData) => this.renderInvoice(rowData)} />*/}
+              
+                <View>
+                  <Text>test</Text>
+                  <Text>test</Text>
+                  <Text>test</Text>
+                  <Text>test</Text>
+                  <Text>test</Text>
+                  <Text>test</Text>
+                  <Text>test</Text>
+                  <Text>test</Text>
+                  <Text>test</Text>
+                  <Text>test</Text>
+                  <Text>test</Text>
+                  <Text>test</Text>
+                  <Text>test</Text>
+                  <Text>test</Text>
+                  <Text>test</Text>
+                  <Text>test</Text>
+                  <Text>test</Text>
+                  <Text>test</Text>
+                  <Text>test</Text>
+                  <Text>test</Text>
+                  <Text>test</Text>
+                  <Text>test</Text>
+                  <Text>test</Text>
+                  <Text>test</Text>
+                  <Text>test</Text>
+                  <Text>test</Text>
+                  <Text>test</Text>
+                  <Text>test</Text>
+                  <Text>test</Text>
+                  <Text>test</Text>
+                  <Text>test</Text>
+                  <Text>test</Text>
+                  <Text>test</Text>
+                  <Text>test</Text>
+                  <Text>test</Text>
+                  <Text>test</Text>
+                  <Text>test</Text>
+                  <Text>test</Text>
+                  <Text>test</Text>
+                  <Text>test</Text>
+                  <Text>test</Text>
+                  <Text>test</Text>
+                  <Text>test</Text>
+                  <Text>test</Text>
+                  <Text>test</Text>
+                  <Text>test</Text>
+                  <Text>test</Text>
+                  <Text>test</Text>
+                </View>
+	 	          </ScrollView>
+              <Tabs selected={this.state.page} style={{backgroundColor:'white'}}
                 selectedStyle={{color:'red'}} onSelect={el=>this.setState({page:el.props.name, searchText: ""})}>
-              <Text name="search" selectedIconStyle={{borderTopWidth:2,borderTopColor:'red'}}>Search</Text>
-              <Text name="crate" selectedIconStyle={{borderTopWidth:2,borderTopColor:'red'}}>Crate</Text>
-              <Text name="pending" selectedIconStyle={{borderTopWidth:2,borderTopColor:'red'}}>Pending</Text>
-            </Tabs>
-	            </View>
+                <Text name="search" selectedIconStyle={{borderTopWidth:2,borderTopColor:'red'}}>Search</Text>
+                <Text name="crate" selectedIconStyle={{borderTopWidth:2,borderTopColor:'red'}}>Crate</Text>
+                <Text name="pending" selectedIconStyle={{borderTopWidth:2,borderTopColor:'red'}}>Pending</Text>
+              </Tabs>
+	          </View>
 	        );
 
 	case 'pending':
