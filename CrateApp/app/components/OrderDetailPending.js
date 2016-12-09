@@ -49,6 +49,8 @@ class OrderDetailPending extends Component {
 	 	return e.id == id;	
 	 }
 
+
+
 	 function findProduct(id) {
 	 	return  function(e) {
 	 		return e.id === id;
@@ -137,11 +139,13 @@ class OrderDetailPending extends Component {
 
      <View style={{flex:1,alignItems: 'center', flexDirection: 'row', justifyContent: 'center',}}> 
                 <TouchableHighlight style={styles.button2}
-                  underlayColor='#99d9f4'>
+                  underlayColor='#99d9f4'
+                  onPress={() => this.onBackPress()}>
                 <Text style={styles.buttonText}>Reject</Text>
               </TouchableHighlight>       
   <TouchableHighlight style={styles.button1}
-                  underlayColor='#99d9f4'>
+                  underlayColor='#99d9f4'
+                  onPress={() => this.onBackPress()}>
                 <Text style={styles.buttonText}>Accept</Text>
               </TouchableHighlight>
             

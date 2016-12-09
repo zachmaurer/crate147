@@ -26,6 +26,7 @@ import renderIf from './renderif.js';
 
 
 var orders = require('../assets/orders.json');
+var gear = require('../assets/settings.png');
 var pendingOrders = require('../assets/pendingorders.json');
 var catalog = require('../assets/catalog.json');
 
@@ -342,10 +343,9 @@ class Catalog extends Component {
 	case 'settings':
 	        return (
 	            <View style={styles.container}>
-	            <Text> Setting 1 </Text>
-	            <Text> Setting 2 </Text>
-	            <Text> Setting 3 </Text>
-	             <Text> {JSON.stringify(this.state)} </Text>
+              <View style={{ alignItems: 'center', flex:1, paddingTop: 200}}>
+	            <Image source ={gear}/>
+              </View>
 	 	<Tabs selected={this.state.page} style={{backgroundColor:'white'}}
 	              selectedStyle={{color:'red'}} onSelect={el=>this.setState({page:el.props.name, searchText: ""})}>
 	            <Text name="orders" selectedIconStyle={{borderTopWidth:2,borderTopColor:'red'}}>Orders</Text>
