@@ -15,7 +15,7 @@ import ReactNative, {
 
 var orders = require('../assets/orders.json');
 var catalog = require('../assets/catalog.json');
-var sparklines = require('../assets/sparklines.png');
+var sparklines = require('../assets/analytics.png');
 
 var catalog_imgs = {
 	"gouda.jpg" : require('../assets/catalog_imgs/gouda.jpg'),
@@ -129,8 +129,8 @@ li_container: {
        flexDirection: 'row',
   },
   sparklines: {
-    height: 200,
-    resizeMode: 'stretch',
+    height: 300,
+    resizeMode: 'cover',
   }
 });
 
