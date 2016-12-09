@@ -11,7 +11,10 @@ import ReactNative, {
   TextInput,
   ListView,
   BackAndroid,
+  ScrollView,
 } from 'react-native';
+
+import Hr from 'react-native-hr';
 
 var orders = require('../assets/orders.json');
 var catalog = require('../assets/catalog.json');
@@ -60,15 +63,29 @@ class ProductDetail extends Component {
 
 		return(
 			<View style={styles.container}>
-			<View style={{alignItems: 'center', flexDirection: 'row'}}>	
-			<Image source={catalog_imgs[product.picture]} style={styles.product_image}/>
-			<Text style={styles.order_text_h1}> {product.name} </Text>
-			</View>
-			<Text style={styles.order_text_h2}> {product.price} </Text>
-			<Text style={styles.order_text_h2}> {product.type} </Text>
-			<Text style={styles.order_text_h2}> Is Available? {product.available ? "Yes" : "No" } </Text>
-			<Text style={styles.order_text_h1}> Product Stats </Text>
-			<Image source={sparklines} style={styles.sparklines}/>
+  			<View style={{marginBottom: 10, alignItems: 'center', flexDirection: 'row'}}>	
+    			<Image source={catalog_imgs[product.picture]} style={styles.product_image}/>
+    			<Text style={styles.order_text_h1}> {product.name} </Text>
+  			</View>
+        <Hr lineColor='#CECECE' />
+        <ScrollView>
+          <Text style={styles.order_text_title}> Product Vitals </Text>
+          <View style={{flexDirection: 'row'}}>
+              <View style={{marginLeft: 20, flex: 0.35, flexDirection:'column'}}>
+          			<Text style={styles.order_text_h2}> Unit Price: </Text>
+          			<Text style={styles.order_text_h2}> Quality: </Text>
+          			<Text style={styles.order_text_h2}> Is Available: </Text>
+              </View>
+              <View style={{flex: 0.65, flexDirection:'column'}}>
+                <Text style={styles.order_text_h2}> {product.price} </Text>
+                <Text style={styles.order_text_h2}> {product.type} </Text>
+                <Text style={styles.order_text_h2}> {product.available ? "Yes" : "No" } </Text>
+              </View>
+          </View>
+    			<Text style={styles.order_text_title}> Product Stats </Text>
+          <Text style={styles.order_text_h3}> Data for period Nov. 29 - Dec. 30 </Text>
+    			<Image source={sparklines} style={styles.sparklines}/>
+        </ScrollView>
 			</View>
 		);
 	}
@@ -100,6 +117,14 @@ li_container: {
     flexDirection: 'column',
     alignItems: 'center',
   },
+  order_text_title: {
+    paddingTop: 20,
+    marginLeft: 12,
+    fontSize: 26,
+    //flex:1,
+    //flexDirection: 'row',
+    justifyContent: 'center',
+  },
   order_text_h1: {
     paddingTop: 10,
     marginLeft: 10,
@@ -111,6 +136,13 @@ li_container: {
     paddingLeft: 25,
     paddingRight: 10,
     fontSize: 14,
+    //flex:2,
+    flexDirection: 'row',
+  },
+  order_text_h3: {
+    paddingLeft: 25,
+    paddingRight: 10,
+    fontSize: 12,
     //flex:2,
     flexDirection: 'row',
   },
