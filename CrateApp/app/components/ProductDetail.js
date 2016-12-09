@@ -90,6 +90,8 @@ const styles = StyleSheet.create({
   borderRadius: 20,
   resizeMode: 'cover',
   paddingLeft: 10,
+  marginLeft: 5,
+  marginTop: 5,
 
 }, 
 li_container: {

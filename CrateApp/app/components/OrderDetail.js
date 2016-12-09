@@ -153,6 +153,8 @@ const styles = StyleSheet.create({
   borderRadius: 20,
   resizeMode: 'contain',
   paddingLeft: 10,
+  marginLeft: 5,
+  marginTop: 5,
 
 }, 
 li_container: {
