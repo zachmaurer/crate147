@@ -17,6 +17,7 @@ import ReactNative, {
 // react-native-tabs is not a default node package
 // if package missing, 'npm install react-native-tabs'
 import Tabs from 'react-native-tabs';
+import ProductOffers from './ProductOffers.js';
 
 
 var orders = require('../assets/orders.json');
@@ -58,6 +59,14 @@ class Shop extends Component {
     BackAndroid.addEventListener('hardwareBackPress', this.onBackPress.bind(this));
   }
 
+    viewProductOffers(id) {
+        this.props.navigator.push({
+          title: "Farms Offering Product",
+          component: ProductOffers,
+          productID: id
+        });
+    }
+
   searchData (searchText, view) { 
 	
      	 let text = searchText.toLowerCase();
@@ -93,36 +102,15 @@ class Shop extends Component {
   };
 
 
-
-    renderOrderLi(data) {
-    	return (
-    		<TouchableHighlight onPress={() => this.viewOrderDetail(data.id)}>
-    		<View>
-		<View style={{flex:1, alignItems: 'center', flexDirection: 'row'}}>	
-    		<Image source={company_imgs[data.id]} style={styles.company_photo}/>
-    		<View style={{flex: 1, flexDirection: 'column'}}>
-    		<Text style={styles.order_text_h1}>Order #{data.id}</Text>
-    		<Text style={styles.order_text_h2}>{data.client}</Text>
-    		</View>
-    		<Text style={[styles.order_text_h2, styles.important_text]}>Due: {data.date}</Text>
-    		</View>
-    		</View>
-    		</TouchableHighlight>
-   	);
-    }
-
     renderCatalogLi(data) {
     	return (
-
-    		<TouchableHighlight onPress={() => this.viewProductDetail(data.id)}>
+    		<TouchableHighlight onPress={() => this.viewProductOffers(data.id)}>
     		<View>
 		<View style={{flex:1, alignItems: 'center', flexDirection: 'row'}}>	
     		<Image source={catalog_imgs[data.picture]} style={styles.catalog_photo}/>
     		<View style={{flex: 1, flexDirection: 'column'}}>
-    		<Text style={styles.order_text_h1}>{data.name}</Text>
-    		<Text style={styles.order_text_h2}>ID #:{data.id}</Text>    		
+    		<Text style={styles.order_text_h1}>{data.name}</Text>  		
     		</View>
-    		<Text style={styles.order_text_h2}>{data.price}</Text>
     		<Text style={styles.order_text_h2}>{data.type}</Text>
     		</View>
     		</View>
