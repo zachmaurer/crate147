@@ -91,9 +91,13 @@ class Shop extends Component {
      	 let items = null;
 	if (view.toString() == 'orders') {
 		items = orders;
-	} else {
+	} 
+
+    if (view.toString() == 'catalog') {
 		items = catalog;
-	}
+	} else {
+            items = restorders;
+      }
 
 	  let results =  items.filter((n) => {
 		
@@ -111,11 +115,17 @@ class Shop extends Component {
 		this.setState({
        		orderData: this.state.orderData.cloneWithRows(results)
      		});
-	} else {
-		this.setState({
-       		catalogData: this.state.catalogData.cloneWithRows(results)
-     		});
-	}
+	} 
+
+  if (view.toString() == 'catalog') {
+    this.setState({
+          catalogData: this.state.catalogData.cloneWithRows(results)
+        });
+  } else {
+           this.setState({
+          restorderData: this.state.catalogData.cloneWithRows(results)
+        });
+      }
      
   };
 
@@ -254,7 +264,7 @@ class Shop extends Component {
           <TextInput
             style={styles.search_input}
             placeholder="Search..."
-            onChangeText={(text) => this.searchData(text, 'orders')}
+            onChangeText={(text) => this.searchData(text, 'pending')}
           />
         </View>}  
                 />      
