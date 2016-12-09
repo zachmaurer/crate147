@@ -10,7 +10,10 @@ import ReactNative, {
   ListView,
   ScrollView,
   BackAndroid,
+  Alert,
 } from 'react-native';
+
+import Shop from './Shop.js'
 
 var orders = require('../assets/orders.json');
 var catalog = require('../assets/catalog.json');
@@ -59,6 +62,15 @@ class OrderSummary extends Component {
     BackAndroid.addEventListener('hardwareBackPress', this.onBackPress.bind(this));
   }
 
+  returnToShop(){
+    Alert.alert("Item Added!", "Added item to Crate");
+    this.props.navigator.replace({
+      title: "Crate",
+      component: Shop,
+      appState: this.state,
+    });
+  }
+
 
   render() {
     var id = this.state.farmID;
@@ -82,7 +94,8 @@ class OrderSummary extends Component {
       <Text style={styles.order_text_h2}>Price: {this.state.product.price} </Text>
       <View style={{alignItems: 'center'}}>
         <TouchableHighlight style={styles.button}
-          underlayColor='#99d9f4'>
+          underlayColor='#99d9f4'
+          onPress={() => this.returnToShop()}>
           <Text style={styles.buttonText}>Add to Cart</Text>
         </TouchableHighlight>
       </View>

@@ -43,7 +43,7 @@ var company_imgs = {
 
 
 
-class Shop extends Component {
+export default class Shop extends Component {
 
   constructor(props) {
       super(props);
