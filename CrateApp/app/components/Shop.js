@@ -55,8 +55,8 @@ class Shop extends Component {
       //this.setState({page: "orders"});
       //console.warn(JSON.stringify(props.appState));
 
-       this.state['restorderData'] = ds.cloneWithRows(restorders);
-
+      this.state['restorderData'] = ds.cloneWithRows(restorders);
+      console.log(this.state.crateData); 
     }
 
 
@@ -242,10 +242,13 @@ class Shop extends Component {
           case 'crate':
 	        return (
             <View style={styles.container}>
-              <ScrollView>
+              <ScrollView style={{marginBottom: 50}}>
+                {/*Title*/}
                 <View style={{alignItems: 'center', justifyContent: 'center', flexDirection: 'row'}}>
                   <Text style={styles.order_text_title}>Crate Summary</Text>
                 </View>
+
+                {/*Table Header*/}
                 <View style={{alignItems: 'center', flexDirection: 'row'}}> 
                   <View style={{flex: 0.57, flexDirection: 'column'}}>
                     <Text style={styles.order_text_h1_bold}>Item</Text>    
@@ -258,61 +261,176 @@ class Shop extends Component {
                   </View>
                 </View>
                 <Hr lineColor='#8E8E8E' />
-
-                {/*<ListView
-                  dataSource={this.state.crateData}
-                  renderRow={(rowData) => this.renderInvoice(rowData)} />*/}
-              
-                <View>
-                  <Text>test</Text>
-                  <Text>test</Text>
-                  <Text>test</Text>
-                  <Text>test</Text>
-                  <Text>test</Text>
-                  <Text>test</Text>
-                  <Text>test</Text>
-                  <Text>test</Text>
-                  <Text>test</Text>
-                  <Text>test</Text>
-                  <Text>test</Text>
-                  <Text>test</Text>
-                  <Text>test</Text>
-                  <Text>test</Text>
-                  <Text>test</Text>
-                  <Text>test</Text>
-                  <Text>test</Text>
-                  <Text>test</Text>
-                  <Text>test</Text>
-                  <Text>test</Text>
-                  <Text>test</Text>
-                  <Text>test</Text>
-                  <Text>test</Text>
-                  <Text>test</Text>
-                  <Text>test</Text>
-                  <Text>test</Text>
-                  <Text>test</Text>
-                  <Text>test</Text>
-                  <Text>test</Text>
-                  <Text>test</Text>
-                  <Text>test</Text>
-                  <Text>test</Text>
-                  <Text>test</Text>
-                  <Text>test</Text>
-                  <Text>test</Text>
-                  <Text>test</Text>
-                  <Text>test</Text>
-                  <Text>test</Text>
-                  <Text>test</Text>
-                  <Text>test</Text>
-                  <Text>test</Text>
-                  <Text>test</Text>
-                  <Text>test</Text>
-                  <Text>test</Text>
-                  <Text>test</Text>
-                  <Text>test</Text>
-                  <Text>test</Text>
-                  <Text>test</Text>
+                
+                {/*Row 1*/}
+                <View style={{flex:1, paddingTop: 10}}>
+                  <View style={{alignItems: 'flex-start', flexDirection: 'row'}}> 
+                    <View style={{flex: 0.57, flexDirection: 'column'}}>
+                      <Text style={styles.order_text_h2_1}>{this.state.crateData._dataBlob.s1[0].name}</Text>
+                      <Text style={styles.order_text_h2}>{this.state.crateData._dataBlob.s1[0].farm}</Text>
+                      <Text style={styles.order_text_h2}>{this.state.crateData._dataBlob.s1[0].priceDisplay}</Text>  
+                    </View>
+                    <View style={{flex: 0.18, flexDirection: 'column'}}>
+                      <Text style={styles.order_text_h2_1}>{this.state.crateData._dataBlob.s1[0].quantity}</Text>    
+                    </View>
+                    <View style={{flex: 0.25, flexDirection: 'column'}}>
+                      <Text style={styles.order_text_h2_1}>{this.state.crateData._dataBlob.s1[0].itemTotal}</Text>    
+                    </View>
+                  </View>
                 </View>
+
+                {/*Row 2*/}
+                <View style={{flex:1, paddingTop: 10}}>
+                  <View style={{alignItems: 'flex-start', flexDirection: 'row'}}> 
+                    <View style={{flex: 0.57, flexDirection: 'column'}}>
+                      <Text style={styles.order_text_h2_1}>{this.state.crateData._dataBlob.s1[1].name}</Text>
+                      <Text style={styles.order_text_h2}>{this.state.crateData._dataBlob.s1[1].farm}</Text>
+                      <Text style={styles.order_text_h2}>{this.state.crateData._dataBlob.s1[1].priceDisplay}</Text>  
+                    </View>
+                    <View style={{flex: 0.18, flexDirection: 'column'}}>
+                      <Text style={styles.order_text_h2_1}>{this.state.crateData._dataBlob.s1[1].quantity}</Text>    
+                    </View>
+                    <View style={{flex: 0.25, flexDirection: 'column'}}>
+                      <Text style={styles.order_text_h2_1}>{this.state.crateData._dataBlob.s1[1].itemTotal}</Text>    
+                    </View>
+                  </View>
+                </View>
+
+                {/*Row 3*/}
+                <View style={{flex:1, paddingTop: 10}}>
+                  <View style={{alignItems: 'flex-start', flexDirection: 'row'}}> 
+                    <View style={{flex: 0.57, flexDirection: 'column'}}>
+                      <Text style={styles.order_text_h2_1}>{this.state.crateData._dataBlob.s1[2].name}</Text>
+                      <Text style={styles.order_text_h2}>{this.state.crateData._dataBlob.s1[2].farm}</Text>
+                      <Text style={styles.order_text_h2}>{this.state.crateData._dataBlob.s1[2].priceDisplay}</Text>  
+                    </View>
+                    <View style={{flex: 0.18, flexDirection: 'column'}}>
+                      <Text style={styles.order_text_h2_1}>{this.state.crateData._dataBlob.s1[2].quantity}</Text>    
+                    </View>
+                    <View style={{flex: 0.25, flexDirection: 'column'}}>
+                      <Text style={styles.order_text_h2_1}>{this.state.crateData._dataBlob.s1[2].itemTotal}</Text>    
+                    </View>
+                  </View>
+                </View>
+
+                {/*Row 4*/}
+                <View style={{flex:1, paddingTop: 10}}>
+                  <View style={{alignItems: 'flex-start', flexDirection: 'row'}}> 
+                    <View style={{flex: 0.57, flexDirection: 'column'}}>
+                      <Text style={styles.order_text_h2_1}>{this.state.crateData._dataBlob.s1[3].name}</Text>
+                      <Text style={styles.order_text_h2}>{this.state.crateData._dataBlob.s1[3].farm}</Text>
+                      <Text style={styles.order_text_h2}>{this.state.crateData._dataBlob.s1[3].priceDisplay}</Text>  
+                    </View>
+                    <View style={{flex: 0.18, flexDirection: 'column'}}>
+                      <Text style={styles.order_text_h2_1}>{this.state.crateData._dataBlob.s1[3].quantity}</Text>    
+                    </View>
+                    <View style={{flex: 0.25, flexDirection: 'column'}}>
+                      <Text style={styles.order_text_h2_1}>{this.state.crateData._dataBlob.s1[3].itemTotal}</Text>    
+                    </View>
+                  </View>
+                </View>
+
+                {/*Row 5*/}
+                <View style={{flex:1, paddingTop: 10}}>
+                  <View style={{alignItems: 'flex-start', flexDirection: 'row'}}> 
+                    <View style={{flex: 0.57, flexDirection: 'column'}}>
+                      <Text style={styles.order_text_h2_1}>{this.state.crateData._dataBlob.s1[4].name}</Text>
+                      <Text style={styles.order_text_h2}>{this.state.crateData._dataBlob.s1[4].farm}</Text>
+                      <Text style={styles.order_text_h2}>{this.state.crateData._dataBlob.s1[4].priceDisplay}</Text>  
+                    </View>
+                    <View style={{flex: 0.18, flexDirection: 'column'}}>
+                      <Text style={styles.order_text_h2_1}>{this.state.crateData._dataBlob.s1[4].quantity}</Text>    
+                    </View>
+                    <View style={{flex: 0.25, flexDirection: 'column'}}>
+                      <Text style={styles.order_text_h2_1}>{this.state.crateData._dataBlob.s1[4].itemTotal}</Text>    
+                    </View>
+                  </View>
+                </View>
+
+                {/*Row 6*/}
+                <View style={{flex:1, paddingTop: 10}}>
+                  <View style={{alignItems: 'flex-start', flexDirection: 'row'}}> 
+                    <View style={{flex: 0.57, flexDirection: 'column'}}>
+                      <Text style={styles.order_text_h2_1}>{this.state.crateData._dataBlob.s1[5].name}</Text>
+                      <Text style={styles.order_text_h2}>{this.state.crateData._dataBlob.s1[5].farm}</Text>
+                      <Text style={styles.order_text_h2}>{this.state.crateData._dataBlob.s1[5].priceDisplay}</Text>  
+                    </View>
+                    <View style={{flex: 0.18, flexDirection: 'column'}}>
+                      <Text style={styles.order_text_h2_1}>{this.state.crateData._dataBlob.s1[5].quantity}</Text>    
+                    </View>
+                    <View style={{flex: 0.25, flexDirection: 'column'}}>
+                      <Text style={styles.order_text_h2_1}>{this.state.crateData._dataBlob.s1[5].itemTotal}</Text>    
+                    </View>
+                  </View>
+                </View>
+
+                {/*Row 7*/}
+                <View style={{flex:1, paddingTop: 10}}>
+                  <View style={{alignItems: 'flex-start', flexDirection: 'row'}}> 
+                    <View style={{flex: 0.57, flexDirection: 'column'}}>
+                      <Text style={styles.order_text_h2_1}>{this.state.crateData._dataBlob.s1[6].name}</Text>
+                      <Text style={styles.order_text_h2}>{this.state.crateData._dataBlob.s1[6].farm}</Text>
+                      <Text style={styles.order_text_h2}>{this.state.crateData._dataBlob.s1[6].priceDisplay}</Text>  
+                    </View>
+                    <View style={{flex: 0.18, flexDirection: 'column'}}>
+                      <Text style={styles.order_text_h2_1}>{this.state.crateData._dataBlob.s1[6].quantity}</Text>    
+                    </View>
+                    <View style={{flex: 0.25, flexDirection: 'column'}}>
+                      <Text style={styles.order_text_h2_1}>{this.state.crateData._dataBlob.s1[6].itemTotal}</Text>    
+                    </View>
+                  </View>
+                </View>
+
+                <Hr lineColor='#8E8E8E' />
+
+                {/*SubTotal*/}
+                <View style={{flex:1, paddingTop: 10}}>
+                  <View style={{alignItems: 'flex-start', flexDirection: 'row'}}> 
+                    <View style={{flex: 0.40, flexDirection: 'column'}}></View>
+                    <View style={{flex: 0.35, flexDirection: 'column'}}>
+                      <Text style={styles.order_text_h2_1}>SubTotal</Text>    
+                    </View>
+                    <View style={{flex: 0.25, flexDirection: 'column'}}>
+                      <Text style={styles.order_text_h2_1}>{this.state.crateData._dataBlob.s1[7].subTotal}</Text>    
+                    </View>
+                  </View>
+                </View>
+
+                {/*Tax*/}
+                <View style={{flex:1, paddingTop: 10}}>
+                  <View style={{alignItems: 'flex-start', flexDirection: 'row'}}> 
+                    <View style={{flex: 0.40, flexDirection: 'column'}}></View>
+                    <View style={{flex: 0.35, flexDirection: 'column'}}>
+                      <Text style={styles.order_text_h2_1}>Tax (<Text style={styles.order_text_h2}>{this.state.crateData._dataBlob.s1[7].taxRate}</Text>)</Text> 
+                    </View>
+                    <View style={{flex: 0.25, flexDirection: 'column'}}>
+                      <Text style={styles.order_text_h2_1}>{this.state.crateData._dataBlob.s1[7].taxAmt}</Text>    
+                    </View>
+                  </View>
+                </View>
+
+                {/*Total*/}
+                <View style={{flex:1, paddingTop: 10}}>
+                  <View style={{alignItems: 'flex-start', flexDirection: 'row'}}> 
+                    <View style={{flex: 0.44, flexDirection: 'column'}}></View>
+                    <View style={{flex: 0.28, flexDirection: 'column', paddingTop:3}}>
+                      <Text style={styles.order_text_h1_plus_bold}>Total</Text> 
+                    </View>
+                    <View style={{flex: 0.28, flexDirection: 'column'}}>
+                      <Text style={styles.order_text_h1_plus_plus_bold}>{this.state.crateData._dataBlob.s1[7].fullTotal}</Text>    
+                    </View>
+                  </View>
+                </View>
+
+                {/*Place Order Button*/}
+                <View style={{alignItems: 'center'}}>
+                  <TouchableHighlight style={styles.button}
+                    underlayColor='#99d9f4'>
+                    <Text style={styles.buttonText}>Place Order</Text>
+                  </TouchableHighlight>
+                </View>
+
+                <View style={{flex:1, paddingTop: 50}}></View>
 	 	          </ScrollView>
               <Tabs selected={this.state.page} style={{backgroundColor:'white'}}
                 selectedStyle={{color:'red'}} onSelect={el=>this.setState({page:el.props.name, searchText: ""})}>
@@ -400,6 +518,22 @@ li_container: {
     //flex:1,
     //flexDirection: 'row',
   },
+  order_text_h1_plus_bold: {
+    paddingTop: 20,
+    marginLeft: 12,
+    fontSize: 20,
+    fontWeight: 'bold',
+    //flex:1,
+    //flexDirection: 'row',
+  },
+  order_text_h1_plus_plus_bold: {
+    paddingTop: 20,
+    marginLeft: 12,
+    fontSize: 24,
+    fontWeight: 'bold',
+    //flex:1,
+    //flexDirection: 'row',
+  },
    order_text_h2: {
     paddingLeft: 25,
     paddingRight: 10,
@@ -462,7 +596,27 @@ li_container: {
     marginLeft: 12,
     fontSize: 24,
   },
-
+  buttonText: {
+  fontSize: 22,
+  color: 'white',
+  alignSelf: 'center'
+  },
+  button: {
+    height: 56,
+    width: 250,
+    padding: 4,
+    margin: 5,
+    marginTop: 40,
+    //flex: 1,
+    //flexDirection: 'column',
+    backgroundColor: '#48BBEC',
+    borderColor: '#48BBEC',
+    borderWidth: 1,
+    borderRadius: 8,
+    marginBottom: 10,
+    alignSelf: 'center',
+    justifyContent: 'center'
+  },
 
 });
 
