@@ -112,14 +112,15 @@ class RestOrderDetail extends Component {
 		var order = orders.find(findOrder);
 		return(
 			<View style={styles.container}>
-			<View style={{alignItems: 'center', flexDirection: 'row'}}>				
-			<Text style={styles.header}> {order.name} </Text>
+			<View style={{alignItems: 'center', flexDirection: 'row',}}>				
+			{/*<Text style={styles.header}> {order.name} </Text>*/}
+      <Text style={styles.order_text_title}> {order.name} </Text>
                   
 			</View>	
-			<View style={{alignItems: 'center', flexDirection: 'row'}}>	
-                    <Text style={styles.h3}>Order #: {order.id} </Text>
-			<Text style={styles.h3}> Due: {order.date} </Text>
-			<Text style={styles.h3}> Delivery Time: {order.delivery_time} </Text>
+			<View style={{alignItems: 'flex-start', flexDirection: 'column'}}>	
+        <Text style={styles.h3}> Order #: {order.id} </Text>
+			  <Text style={styles.h3}> Due: {order.date} </Text>
+			  <Text style={styles.h3}> Delivery Time: 8:30am </Text>
 			</View>	
 			
 			<Text style={styles.h1}> Order Details </Text>
@@ -132,10 +133,10 @@ class RestOrderDetail extends Component {
 
 
         			  /> 
-                <View style={{justifyContent: 'flex-end',  alignItems: 'flex-end', paddingRight: 30}}>
+                <View style={{justifyContent: 'flex-end',  alignItems: 'flex-end', paddingRight: 30, paddingBottom:40}}>
                 <Text style={styles.header}> Total Cost: {order.cost}</Text>
                 </View>
-             <View style={{flex:1,alignItems: 'center', flexDirection: 'row', justifyContent: 'center',}}> 
+             <View style={{flex:1,alignItems: 'center', flexDirection: 'row', justifyContent: 'center',marginBottom:30}}> 
 
                 <TouchableHighlight style={styles.button2}
                   underlayColor='#99d9f4'>
@@ -175,9 +176,10 @@ li_container: {
     alignItems: 'center',
   },
   h1: {
-    paddingTop: 10,
+    paddingTop: 20,
     marginLeft: 10,
     fontSize: 22,
+    alignSelf: 'center',
     //flex:1,
     //flexDirection: 'row',
   },
@@ -227,6 +229,16 @@ li_container: {
     padding: 12,
     flexDirection: 'column',
     alignItems: 'center',
+  },
+  order_text_title: {
+    paddingTop: 20,
+    fontSize: 24,
+    marginLeft: 12,
+    flex:1,
+    flexDirection: 'row',
+    alignSelf: 'center',
+    justifyContent: 'center',
+    alignItems: 'stretch',
   },
   order_text_h1: {
     paddingTop: 20,
