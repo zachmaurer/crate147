@@ -17,8 +17,9 @@ import ReactNative, {
 // react-native-tabs is not a default node package
 // if package missing, 'npm install react-native-tabs'
 import Tabs from 'react-native-tabs';
+import Hr from 'react-native-hr';
 import ProductOffers from './ProductOffers.js';
-import RestOrderDetail from './RestOrderDetail.js'
+import RestOrderDetail from './RestOrderDetail.js';
 
 
 var restorders = require('../assets/restorders.json');
@@ -168,7 +169,28 @@ class Shop extends Component {
     renderInvoice(data) {
       var itemTotal = data.quantity * data.price;
       itemTotal = itemTotal.toFixed(2);
-      return (
+      // Check if row is last in Listview
+      if(data.id === this.state.crateData._cachedRowCount){
+        return (
+        <View style={{flex:1, paddingTop: 10}}>
+          <View style={{alignItems: 'flex-start', flexDirection: 'row'}}> 
+            <View style={{flex: 0.57, flexDirection: 'column'}}>
+              <Text style={styles.order_text_h2_1}>{data.name}</Text>
+              <Text style={styles.order_text_h2}>{data.priceDisplay}</Text>  
+            </View>
+            <View style={{flex: 0.18, flexDirection: 'column'}}>
+              <Text style={styles.order_text_h2_1}>{data.quantity}</Text>    
+            </View>
+            <View style={{flex: 0.25, flexDirection: 'column'}}>
+              <Text style={styles.order_text_h2_1}>{itemTotal}</Text>    
+            </View>
+          </View>
+          {/*Print Horizontal Line*/}
+          <Hr lineColor='#8E8E8E' />
+        </View>
+        );
+      } else {
+        return (
         <View style={{flex:1, paddingTop: 10}}>
           <View style={{alignItems: 'flex-start', flexDirection: 'row'}}> 
             <View style={{flex: 0.57, flexDirection: 'column'}}>
@@ -183,7 +205,8 @@ class Shop extends Component {
             </View>
           </View>
         </View>
-      );
+        );
+      }
     }
 
 
@@ -233,15 +256,14 @@ class Shop extends Component {
                 <Text style={styles.order_text_h1_bold}>Item Total</Text>    
               </View>
             </View>
-            <View>
-              <Text style={styles.separator}></Text>
-            </View>
+            <Hr lineColor='#8E8E8E' />
+
             <ListView
               dataSource={this.state.crateData}
               renderRow={(rowData) => this.renderInvoice(rowData)} />
-            <View style={{alignItems: 'center', justifyContent: 'center', flexDirection: 'row'}}>
-              <Text>Some general text.</Text>
-              <Text style={styles.separator}></Text>
+            
+            <View>
+              <Text>test</Text>
             </View>
 	 	
     <Tabs selected={this.state.page} style={{backgroundColor:'white'}}
@@ -363,6 +385,10 @@ li_container: {
    separator: {
     flex: 1,
     height: StyleSheet.hairlineWidth,
+    backgroundColor: '#8E8E8E',
+  },
+  separator_2: {
+    height: 1,
     backgroundColor: '#8E8E8E',
   },
   important_text :{
