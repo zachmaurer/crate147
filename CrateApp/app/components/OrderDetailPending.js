@@ -40,7 +40,7 @@ var client_maps = {
 var ds = new ListView.DataSource({ rowHasChanged: (row1, row2) => row1 !== row2 })
 
 
-class OrderDetail extends Component {
+class OrderDetailPending extends Component {
 	constructor(props) {
 	      super(props);
 
@@ -90,6 +90,7 @@ class OrderDetail extends Component {
     		<View style={{flex: 1, flexDirection: 'column'}}>
     		<Text style={styles.order_text_h1}>{data.name} ({data.type})</Text>	
     		</View>
+            <Text style={styles.available}>Available</Text>
     		<Text style={styles.order_text_h2}>QTY: {data.qty}</Text>
     		<Text style={styles.order_text_h2}>{data.price}</Text>
     		<Text style={styles.order_text_h2}></Text>
@@ -118,8 +119,11 @@ class OrderDetail extends Component {
 			<Text style={styles.h2}> Address: {order.address} </Text>
 			<Text style={styles.h3}> Due: {order.date} </Text>
 			<Text style={styles.h3}> Delivery Time: {order.delivery_time} </Text>
+
 			</View>	
-			
+	         	
+
+
 			<Text style={styles.h1}> Order Details </Text>
 			<ListView
         			dataSource={this.state.dataSource}
@@ -130,7 +134,22 @@ class OrderDetail extends Component {
 
 
         			  /> 
+                <View style={{flex:1,alignItems: 'center', flexDirection: 'row', justifyContent: 'center',}}> 
+                <TouchableHighlight style={styles.button2}
+                  underlayColor='#99d9f4'>
+                <Text style={styles.buttonText}>Reject</Text>
+              </TouchableHighlight>       
+  <TouchableHighlight style={styles.button1}
+                  underlayColor='#99d9f4'>
+                <Text style={styles.buttonText}>Accept</Text>
+              </TouchableHighlight>
+                   
+               </View>
+            
+
+            <View>
         			  <Image source={client_maps[order.id]} style={styles.map}/>
+                </View>
 			</View>
 		);
 	}
@@ -182,6 +201,9 @@ li_container: {
     //flex:2,
     flexDirection: 'row',
     color: 'red'
+  },
+  available: {
+     color: 'green',
   },
   catalog_photo: {
     marginLeft: 10,
@@ -239,7 +261,7 @@ li_container: {
   },
    map: {
     height: 200,
-    flex: 1,
+   flex: 1,
     	resizeMode: 'cover',
   },
    company_photo: {
@@ -254,7 +276,34 @@ li_container: {
     flex: 1,
     height: StyleSheet.hairlineWidth,
     backgroundColor: '#8E8E8E',
-  }
+  },
+  buttonText: {
+  fontSize: 24,
+  color: 'white',
+  alignSelf: 'center'
+},
+button1: {
+  height: 50,
+  width: 200,
+  padding: 4,
+  margin: 5,
+  backgroundColor: '#48BBEC',
+  borderColor: '#48BBEC',
+  borderWidth: 1,
+  borderRadius: 8,
+  marginBottom: 10,
+},
+button2: {
+  height: 50,
+  width: 200,
+  padding: 4,
+  margin: 5,
+  backgroundColor: '#E03142',
+  borderColor: '#E03142',
+  borderWidth: 1,
+  borderRadius: 8,
+  marginBottom: 10,
+},
 });
 
-module.exports = OrderDetail;
+module.exports = OrderDetailPending;

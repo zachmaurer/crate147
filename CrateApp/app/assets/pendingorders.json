@@ -1,0 +1,11 @@
+[
+{
+"id": 3,
+"date": "12/26/16",
+"client": "Bayswater Cafe",
+"address": "666 Vine Street",
+"delivery_time": "3:00pm",
+"client_id": "3",
+"order": [ {"id": 5, "qty": 2}, {"id": 4, "qty": 3}, {"id": 3, "qty": 3}, {"id": 2, "qty": 3}, {"id": 5, "qty": 2},{"id": 2, "qty": 10} ]
+}
+]

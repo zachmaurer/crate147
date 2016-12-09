@@ -9,7 +9,8 @@
   "dependencies": {
     "react": "15.4.1",
     "react-native": "0.38.1",
-    "react-native-back-android": "^2.0.1"
+    "react-native-back-android": "^2.0.1",
+    "react-native-segmented-control-tab": "^2.0.1"
   },
   "jest": {
     "preset": "react-native"
