@@ -431,8 +431,19 @@ class Catalog extends Component {
 	case 'settings':
 	        return (
 	          <View style={styles.container}>
-              <View style={{ alignItems: 'center', flex:1, paddingTop: 200}}>
-	            <Image source ={gear}/>
+              <View style={{marginTop: 70, flexDirection:'column', alignItems: 'center', alignSelf: 'center'}}>
+                <View style={{flexDirection:'row'}}>
+                  <Text style={styles.order_text_h2}>Crate works best with a Stripe account.</Text>
+                </View>
+                <View style={{flexDirection:'row'}}>
+                  <TouchableHighlight style={styles.button}
+                    underlayColor='#99d9f4'>
+                    <Text style={styles.buttonText}>Connect to Stripe</Text>
+                  </TouchableHighlight>
+                </View>
+              </View>
+              <View style={{ alignItems: 'center', flex:1, paddingTop: 120}}>
+	            <  Image source ={gear}/>
               </View>
 	 	<Tabs selected={this.state.page} style={{backgroundColor:'white'}}
 	              selectedStyle={{color:'red'}} onSelect={el=>this.setState({page:el.props.name, searchText: ""})}>
@@ -563,7 +574,31 @@ li_container: {
    activetabStyle: {
       backgroundColor: '#DB5461',
        
-  }
+  },
+  buttonText: {
+  fontSize: 18,
+  color: 'white',
+  alignSelf: 'center'
+},
+  buttonText_screen: {
+  fontSize: 18,
+  color: '#000000',
+  alignSelf: 'center'
+},
+button: {
+  height: 36,
+  width: 250,
+  padding: 4,
+  margin: 5,
+  //flex: 1,
+  //flexDirection: 'column',
+  backgroundColor: '#48BBEC',
+  borderColor: '#48BBEC',
+  borderWidth: 1,
+  borderRadius: 8,
+  alignSelf: 'center',
+  justifyContent: 'center'
+},
 
 
 });
