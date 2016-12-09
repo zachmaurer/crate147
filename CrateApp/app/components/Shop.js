@@ -171,15 +171,15 @@ class Shop extends Component {
       return (
         <View style={{flex:1, paddingTop: 10}}>
           <View style={{alignItems: 'flex-start', flexDirection: 'row'}}> 
-            <View style={{flex: 0.6, flexDirection: 'column'}}>
-              <Text style={styles.order_text_h2}>{data.name}</Text>
+            <View style={{flex: 0.57, flexDirection: 'column'}}>
+              <Text style={styles.order_text_h2_1}>{data.name}</Text>
               <Text style={styles.order_text_h2}>{data.priceDisplay}</Text>  
             </View>
-            <View style={{flex: 0.15, flexDirection: 'column'}}>
-              <Text style={styles.order_text_h2}>{data.quantity}</Text>    
+            <View style={{flex: 0.18, flexDirection: 'column'}}>
+              <Text style={styles.order_text_h2_1}>{data.quantity}</Text>    
             </View>
             <View style={{flex: 0.25, flexDirection: 'column'}}>
-              <Text style={styles.order_text_h2}>{itemTotal}</Text>    
+              <Text style={styles.order_text_h2_1}>{itemTotal}</Text>    
             </View>
           </View>
         </View>
@@ -204,6 +204,7 @@ class Shop extends Component {
 			      placeholder="Search..."
 			      onChangeText={(text) => this.searchData(text, 'catalog')}
 			    />
+
 			  </View>}  
         			  />        
 	 	<Tabs selected={this.state.page} style={{backgroundColor:'white'}}
@@ -222,20 +223,26 @@ class Shop extends Component {
                 <Text style={styles.order_text_title}>Crate Summary</Text>
               </View>
               <View style={{alignItems: 'center', flexDirection: 'row'}}> 
-              <View style={{flex: 0.6, flexDirection: 'column'}}>
+              <View style={{flex: 0.57, flexDirection: 'column'}}>
                 <Text style={styles.order_text_h1_bold}>Item</Text>    
               </View>
-              <View style={{flex: 0.15, flexDirection: 'column'}}>
+              <View style={{flex: 0.18, flexDirection: 'column'}}>
                 <Text style={styles.order_text_h1_bold}>Qnt.</Text>    
               </View>
               <View style={{flex: 0.25, flexDirection: 'column'}}>
                 <Text style={styles.order_text_h1_bold}>Item Total</Text>    
               </View>
             </View>
-              <ListView
-                dataSource={this.state.crateData}
-                renderRow={(rowData) => this.renderInvoice(rowData)}
-              />
+            <View>
+              <Text style={styles.separator}></Text>
+            </View>
+            <ListView
+              dataSource={this.state.crateData}
+              renderRow={(rowData) => this.renderInvoice(rowData)} />
+            <View style={{alignItems: 'center', justifyContent: 'center', flexDirection: 'row'}}>
+              <Text>Some general text.</Text>
+              <Text style={styles.separator}></Text>
+            </View>
 	 	
     <Tabs selected={this.state.page} style={{backgroundColor:'white'}}
                 selectedStyle={{color:'red'}} onSelect={el=>this.setState({page:el.props.name, searchText: ""})}>
@@ -327,6 +334,13 @@ li_container: {
     paddingLeft: 25,
     paddingRight: 10,
     fontSize: 14,
+    //flex:2,
+    flexDirection: 'row',
+  },
+  order_text_h2_1: {
+    paddingLeft: 25,
+    paddingRight: 10,
+    fontSize: 16,
     //flex:2,
     flexDirection: 'row',
   },
