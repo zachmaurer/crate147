@@ -12,8 +12,6 @@ import ReactNative, {
   BackAndroid,
 } from 'react-native';
 
-import OrderSummary from './OrderSummary.js';
-
 var orders = require('../assets/orders.json');
 var catalog = require('../assets/catalog.json');
 var farms = require('../assets/farms.json');
@@ -34,23 +32,11 @@ var company_imgs = {
 
 
 
-class ProductOffers extends Component {
+class OrderSummary extends Component {
   constructor(props) {
     super(props);
     this.state = props.route.appState;
-    this.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-    this.state['productID'] = props.route.productID;
-    var _this = this;
-    var priceList = (function() {
-      var id = _this.state.productID;
-      function withProductID(e) {
-        return e.id == id;
-      }
-      var priceList = prices.find(withProductID).price;
-      console.log(priceList);
-      return priceList;
-    })();
-    this.state['priceData'] = this.ds.cloneWithRows(priceList);
+    this.state['farmID'] = props.route.farmID;
   }
 
   onBackPress(){
@@ -62,52 +48,17 @@ class ProductOffers extends Component {
     BackAndroid.addEventListener('hardwareBackPress', this.onBackPress.bind(this));
   }
 
-  viewSummary(id) {
-        this.props.navigator.push({
-          title: "Summary of Order",
-          component: OrderSummary,
-          farmID: id,
-          appState: this.state,
-        });
-  }
-
-  renderPricesLi(data) {
-      return (
-        <TouchableHighlight onPress={() => this.viewSummary(data.farmID)}>
-        <View>
-          <View style={{flex:1, alignItems: 'center', flexDirection: 'row'}}>
-            <View style={{flex: 1, flexDirection: 'column'}}>
-              <Text style={styles.order_text_h1}>{data.farmName}</Text>
-            </View>
-            <Text style={styles.order_text_h2}>{data.unitPrice}</Text>
-          </View>
-        </View>
-        </TouchableHighlight>
-
-    );
-  }
 
   render() {
-    var id = this.state.productID;
-    function withProductID(e) {
-      return e.id == id;
-    }
-    var product = catalog.find(withProductID);
-
     return(
       <View style={styles.container}>
       <View style={{alignItems: 'center', flexDirection: 'row'}}> 
-        <Image source={catalog_imgs[product.picture]} style={styles.product_image}/>
-        <Text style={styles.order_text_h1}> {product.name} </Text>
-      </View>
-      <ListView
-        dataSource={this.state.priceData}
-        renderRow={(rowData) => this.renderPricesLi(rowData)}
-        renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator}/>}
-      />
+      <Text>{this.farmID}</Text>
+      </View> 
       </View>
     );
   }
+
 }
 
 const styles = StyleSheet.create({
@@ -195,4 +146,4 @@ li_container: {
 
 });
 
-module.exports = ProductOffers;
+module.exports = OrderSummary;

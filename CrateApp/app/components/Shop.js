@@ -63,7 +63,8 @@ class Shop extends Component {
         this.props.navigator.push({
           title: "Farms Offering Product",
           component: ProductOffers,
-          productID: id
+          productID: id,
+          appState: this.state,
         });
     }
 
