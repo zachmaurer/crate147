@@ -167,7 +167,7 @@ const styles = StyleSheet.create({
     //justifyContent: 'center',
     //alignItems: 'center',
     backgroundColor: '#F5FCFF',
-    paddingTop: 0,
+    paddingTop: 70,
     //flexDirection: 'row',
   },
    product_image: {
@@ -266,7 +266,7 @@ li_container: {
    map: {
     height: 200,
    flex: 1,
-    	resizeMode: 'cover',
+    	resizeMode: 'contain',
   },
    company_photo: {
     marginLeft: 10,

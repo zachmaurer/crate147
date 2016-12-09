@@ -396,7 +396,7 @@ export default class Shop extends Component {
                 {/*SubTotal*/}
                 <View style={{flex:1, paddingTop: 10}}>
                   <View style={{alignItems: 'flex-start', flexDirection: 'row'}}> 
-                    <View style={{flex: 0.40, flexDirection: 'column'}}></View>
+                    <View style={{flex: 0.1, flexDirection: 'column'}}></View>
                     <View style={{flex: 0.35, flexDirection: 'column'}}>
                       <Text style={styles.order_text_h2_1}>SubTotal</Text>    
                     </View>
@@ -409,7 +409,7 @@ export default class Shop extends Component {
                 {/*Tax*/}
                 <View style={{flex:1, paddingTop: 10}}>
                   <View style={{alignItems: 'flex-start', flexDirection: 'row'}}> 
-                    <View style={{flex: 0.40, flexDirection: 'column'}}></View>
+                    <View style={{flex: 0.1, flexDirection: 'column'}}></View>
                     <View style={{flex: 0.35, flexDirection: 'column'}}>
                       <Text style={styles.order_text_h2_1}>Tax (<Text style={styles.order_text_h2}>{this.state.crateData._dataBlob.s1[7].taxRate}</Text>)</Text> 
                     </View>
@@ -422,7 +422,7 @@ export default class Shop extends Component {
                 {/*Total*/}
                 <View style={{flex:1, paddingTop: 10}}>
                   <View style={{alignItems: 'flex-start', flexDirection: 'row'}}> 
-                    <View style={{flex: 0.44, flexDirection: 'column'}}></View>
+                    <View style={{flex: 0.12, flexDirection: 'column'}}></View>
                     <View style={{flex: 0.28, flexDirection: 'column', paddingTop:3}}>
                       <Text style={styles.order_text_h1_plus_bold}>Total</Text> 
                     </View>
@@ -437,7 +437,7 @@ export default class Shop extends Component {
                   <TouchableHighlight style={styles.button}
                     underlayColor='#99d9f4'
                     onPress={() => this.enterPayment()}>
-                    <Text style={styles.buttonText}>To Checkout</Text>
+                    <Text style={styles.buttonText}>Checkout</Text>
                   </TouchableHighlight>
                 </View>
 
@@ -491,6 +491,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FCFF',
     paddingTop: 0,
     //flexDirection: 'row',
+    paddingTop: 70,
   },
    order_image: {
   width: 200,
@@ -605,16 +606,16 @@ li_container: {
   header: {
     paddingTop: 20,
     marginLeft: 12,
-    fontSize: 24,
+    fontSize: 16,
   },
   buttonText: {
-  fontSize: 22,
+  fontSize: 16,
   color: 'white',
   alignSelf: 'center'
   },
   button: {
-    height: 56,
-    width: 250,
+    height: 40,
+    width: 200,
     padding: 4,
     margin: 5,
     marginTop: 40,

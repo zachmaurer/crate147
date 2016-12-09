@@ -92,7 +92,7 @@ class RestOrderDetail extends Component {
     		<Text style={styles.order_text_h1}>{data.name} ({data.type})</Text>
             <Text style={styles.order_text_h1}>{data.farm}</Text> 	
     		</View>
-            <Text style={{color:'red'}}>Pending</Text>
+            <Text style={{color:'red', fontSize: 8}}>Pending</Text>
     		<Text style={styles.order_text_h2}>QTY: {data.qty}</Text>
     		<Text style={styles.order_text_h2}>{data.price}</Text>
     		<Text style={styles.order_text_h2}></Text>
@@ -158,7 +158,7 @@ const styles = StyleSheet.create({
     //justifyContent: 'center',
     //alignItems: 'center',
     backgroundColor: '#F5FCFF',
-    paddingTop: 0,
+    paddingTop: 70,
     //flexDirection: 'row',
   },
    product_image: {
@@ -200,9 +200,11 @@ li_container: {
   },
   catalog_photo: {
     marginLeft: 10,
-    height: 40,
-    width: 40,
-    borderRadius: 20,
+    marginTop: 4,
+    marginBottom: 4,
+    height: 30,
+    width: 30,
+    borderRadius: 15,
     resizeMode: 'cover',
        flexDirection: 'row',
   },
@@ -232,8 +234,8 @@ li_container: {
   },
   order_text_title: {
     paddingTop: 20,
-    fontSize: 24,
-    marginLeft: 12,
+    fontSize: 18,
+    marginLeft: 8,
     flex:1,
     flexDirection: 'row',
     alignSelf: 'center',
@@ -241,16 +243,16 @@ li_container: {
     alignItems: 'stretch',
   },
   order_text_h1: {
-    paddingTop: 20,
-    marginLeft: 12,
-    fontSize: 16,
+    // paddingTop: 20,
+     marginLeft: 2,
+    fontSize: 10,
     //flex:1,
     //flexDirection: 'row',
   },
    order_text_h2: {
-    paddingLeft: 25,
-    paddingRight: 10,
-    fontSize: 14,
+     paddingLeft: 2,
+    // paddingRight: 10,
+    fontSize: 12,
     //flex:2,
     flexDirection: 'row',
   },
@@ -283,10 +285,10 @@ li_container: {
    header: {
     paddingTop: 20,
     marginLeft: 12,
-    fontSize: 35,
+    fontSize: 18,
   },
  buttonText: {
-  fontSize: 24,
+  fontSize: 12,
   color: 'white',
   alignSelf: 'center'
 },
@@ -302,7 +304,7 @@ button1: {
   marginBottom: 10,
 },
 button2: {
-  height: 50,
+  height: 30,
   width: 200,
   padding: 4,
   margin: 5,
@@ -311,6 +313,7 @@ button2: {
   borderWidth: 1,
   borderRadius: 8,
   marginBottom: 10,
+    justifyContent: 'center',
 },
 });
 

@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
     //justifyContent: 'center',
     //alignItems: 'center',
     backgroundColor: '#F5FCFF',
-    paddingTop: 0,
+    paddingTop: 70,
     //flexDirection: 'row',
   },
    product_image: {
@@ -166,21 +166,21 @@ li_container: {
   h1: {
     paddingTop: 10,
     marginLeft: 10,
-    fontSize: 22,
+    fontSize: 16,
     //flex:1,
     //flexDirection: 'row',
   },
    h2: {
     paddingLeft: 25,
     paddingRight: 10,
-    fontSize: 16,
+    fontSize: 10,
     //flex:2,
     flexDirection: 'row',
   },
   h3: {
     paddingLeft: 25,
     paddingRight: 10,
-    fontSize: 16,
+    fontSize: 10,
     //flex:2,
     flexDirection: 'row',
     color: 'red'
@@ -220,14 +220,14 @@ li_container: {
   order_text_h1: {
     paddingTop: 20,
     marginLeft: 12,
-    fontSize: 16,
+    fontSize: 10,
     //flex:1,
     //flexDirection: 'row',
   },
    order_text_h2: {
     paddingLeft: 25,
     paddingRight: 10,
-    fontSize: 14,
+    fontSize: 8,
     //flex:2,
     flexDirection: 'row',
   },

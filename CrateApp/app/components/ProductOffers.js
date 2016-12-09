@@ -85,13 +85,13 @@ class ProductOffers extends Component {
             <View style={{flexDirection:'column', flex:0.2}}>
               <Image source={farm_imgs[data.farmID]} style={styles.product_image_small} />
             </View>
-            <View style={{flexDirection:'column', flex:0.55}}>
+            <View style={{flexDirection:'column', flex:0.3}}>
               <View style={{flex:1, alignItems: 'center', flexDirection: 'row'}}>
                 <View style={{flex: 1, flexDirection: 'column'}}>
                   <Text style={styles.order_text_h1}>{data.farmName}</Text>
                 </View>
               </View>
-              <View style={{flex:1, alignItems: 'center', flexDirection: 'row'}}>
+              <View style={{flex:2, alignItems: 'center', flexDirection: 'row'}}>
                 <Text style={styles.order_text_h3}>{data.blurb}</Text>
               </View>
             </View>
@@ -118,7 +118,7 @@ class ProductOffers extends Component {
         <Image source={catalog_imgs[product.picture]} style={styles.product_image}/>
         <Text style={styles.order_text_h1}> {product.name} </Text>
       </View>
-      <View style={{marginTop:20}}></View>
+      <View style={{marginTop:10}}></View>
       <ListView
         dataSource={this.state.priceData}
         renderRow={(rowData) => this.renderPricesLi(rowData, product)}
@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
     //justifyContent: 'center',
     //alignItems: 'center',
     backgroundColor: '#F5FCFF',
-    paddingTop: 0,
+    paddingTop: 70,
     //flexDirection: 'row',
   },
    order_image: {
@@ -159,9 +159,9 @@ const styles = StyleSheet.create({
   borderRadius: 10,
   resizeMode: 'cover',
   paddingLeft: 10,
-  marginLeft: 10,
-  marginTop: 5,
-  marginBottom: 5,
+  marginLeft: 5,
+  marginTop: 1,
+  marginBottom: 1,
   },
 li_container: {
     flex: 1,
@@ -186,7 +186,7 @@ li_container: {
    order_text_h3: {
     paddingLeft: 25,
     paddingRight: 10,
-    fontSize: 12,
+    fontSize: 8,
     //flex:2,
     flexDirection: 'row',
   },

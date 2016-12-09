@@ -474,6 +474,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FCFF',
     paddingTop: 0,
     //flexDirection: 'row',
+    paddingTop: 70,
   },
    order_image: {
   width: 200,
@@ -490,7 +491,7 @@ li_container: {
   order_text_title: {
     paddingTop: 20,
     marginLeft: 12,
-    fontSize: 26,
+    fontSize: 20,
     //flex:1,
     //flexDirection: 'row',
     justifyContent: 'center',
@@ -498,20 +499,20 @@ li_container: {
   order_text_h1: {
     paddingTop: 20,
     marginLeft: 12,
-    fontSize: 16,
+    fontSize: 13,
     //flex:1,
     //flexDirection: 'row',
   },
     order_text_h1_lo: {
     marginLeft: 12,
-    fontSize: 18,
+    fontSize: 10,
     //flex:1,
     //flexDirection: 'row',
   },
    order_text_h2: {
     paddingLeft: 25,
     paddingRight: 10,
-    fontSize: 14,
+    fontSize: 8,
     //flex:2,
     flexDirection: 'row',
   },
@@ -556,10 +557,10 @@ li_container: {
     backgroundColor: '#C1C1C1',
   },
   search_input: {
-    height: 42,
+    height: 32,
     flex: 1,
     paddingHorizontal: 8,
-    fontSize: 15,
+    fontSize: 10,
     backgroundColor: '#FFFFFF',
     borderRadius: 2,
   },

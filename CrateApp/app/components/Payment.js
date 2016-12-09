@@ -26,7 +26,6 @@ var company_imgs = {
 	1 : require('../assets/company_imgs/1.jpg'),
 	3 : require('../assets/company_imgs/2.jpg'),
 	2 : require('../assets/company_imgs/3.jpg'),
-  4 : require('../assets/company_imgs/powered_by_stripe.png'),
   5 : require('../assets/company_imgs/Credit-Card-Logos.jpg'),
 };
 
@@ -224,16 +223,16 @@ const styles = StyleSheet.create({
     fontSize: 24,
   },
   buttonText: {
-  fontSize: 22,
+  fontSize: 14,
   color: 'white',
   alignSelf: 'center'
   },
   button: {
-    height: 56,
-    width: 250,
+    height: 25,
+    width: 200,
     padding: 4,
     margin: 5,
-    marginTop: 20,
+    marginTop: 5,
     //flex: 1,
     //flexDirection: 'column',
     backgroundColor: '#48BBEC',

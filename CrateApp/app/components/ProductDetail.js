@@ -68,8 +68,8 @@ class ProductDetail extends Component {
     			<Text style={styles.order_text_h1}> {product.name} </Text>
   			</View>
         <Hr lineColor='#CECECE' />
-        <ScrollView>
-          <Text style={styles.order_text_title}> Product Vitals </Text>
+        <View>
+          <Text style={styles.order_text_title}> Product Info </Text>
           <View style={{flexDirection: 'row'}}>
               <View style={{marginLeft: 20, flex: 0.35, flexDirection:'column'}}>
           			<Text style={styles.order_text_h2}> Unit Price: </Text>
@@ -84,8 +84,9 @@ class ProductDetail extends Component {
           </View>
     			<Text style={styles.order_text_title}> Product Stats </Text>
           <Text style={styles.order_text_h3}> Data for period Nov. 29 - Dec. 30 </Text>
-    			<Image source={sparklines} style={styles.sparklines}/>
-        </ScrollView>
+    			
+        </View>
+        <Image source={sparklines} style={styles.sparklines}/>
 			</View>
 		);
 	}
@@ -100,6 +101,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FCFF',
     paddingTop: 0,
     //flexDirection: 'row',
+    paddingTop:70,
   },
    product_image: {
   width: 100,
@@ -163,8 +165,10 @@ li_container: {
        flexDirection: 'row',
   },
   sparklines: {
-    height: 300,
-    resizeMode: 'cover',
+    height:200,
+    width: 400,
+    alignItems: 'center',
+    resizeMode: 'stretch',
   }
 });
 

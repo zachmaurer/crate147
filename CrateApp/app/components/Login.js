@@ -29,13 +29,13 @@ class Login extends Component {
     }
 
     onLogin(event) {
-      if(this.state.username === "farm") {
+      if(this.state.username.toLowerCase() === "farm") {
         this.props.navigator.replace({
           title: 'Crate',
           component: Catalog,
           appState: this.state
         });
-      } else if(this.state.username === "rest") {
+      } else if(this.state.username.toLowerCase() === "rest") {
         this.props.navigator.replace({
           title: 'Crate',
           component: Shop,

@@ -284,14 +284,14 @@ li_container: {
   },
   order_text_h1_lo: {
     marginLeft: 12,
-    fontSize: 18,
+    fontSize: 14,
     //flex:1,
     //flexDirection: 'row',
   },
    order_text_h2: {
     paddingLeft: 25,
     paddingRight: 10,
-    fontSize: 14,
+    fontSize: 10,
     //flex:2,
     flexDirection: 'row',
   },
@@ -373,7 +373,7 @@ button_small: {
 },
 button_screen: {
   height: 36,
-  width: 74,
+  width: 40,
   padding: 4,
   marginTop: 10,
   //flex: 1,

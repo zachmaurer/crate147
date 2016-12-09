@@ -28,7 +28,6 @@ var company_imgs = {
 	1 : require('../assets/company_imgs/1.jpg'),
 	3 : require('../assets/company_imgs/2.jpg'),
 	2 : require('../assets/company_imgs/3.jpg'),
-  4 : require('../assets/company_imgs/powered_by_stripe.png'),
   5 : require('../assets/company_imgs/Credit-Card-Logos.jpg'),
 };
 
