@@ -80,22 +80,24 @@ class ProductOffers extends Component {
   renderPricesLi(data, product) {
       return (
         <TouchableHighlight onPress={() => this.viewSummary(data.farmID, product)}>
-        <View style={{flex:1, flexDirection:'row'}}>
-          <View style={{flexDirection:'column', flex:0.2}}>
-            <Image source={farm_imgs[data.farmID]} style={styles.product_image_small} />
-          </View>
-          <View style={{flexDirection:'column', flex:0.55}}>
-            <View style={{flex:1, alignItems: 'center', flexDirection: 'row'}}>
-              <View style={{flex: 1, flexDirection: 'column'}}>
-                <Text style={styles.order_text_h1}>{data.farmName}</Text>
+        <View>
+          <View style={{flex:1, flexDirection:'row'}}>
+            <View style={{flexDirection:'column', flex:0.2}}>
+              <Image source={farm_imgs[data.farmID]} style={styles.product_image_small} />
+            </View>
+            <View style={{flexDirection:'column', flex:0.55}}>
+              <View style={{flex:1, alignItems: 'center', flexDirection: 'row'}}>
+                <View style={{flex: 1, flexDirection: 'column'}}>
+                  <Text style={styles.order_text_h1}>{data.farmName}</Text>
+                </View>
+              </View>
+              <View style={{flex:1, alignItems: 'center', flexDirection: 'row'}}>
+                <Text style={styles.order_text_h3}>{data.blurb}</Text>
               </View>
             </View>
-            <View style={{flex:1, alignItems: 'center', flexDirection: 'row'}}>
-              <Text style={styles.order_text_h3}>{data.blurb}</Text>
+            <View style={{flexDirection:'column', flex:0.25, marginTop: 30}}>
+              <Text style={styles.order_text_h2}>{data.unitPrice}</Text>
             </View>
-          </View>
-          <View style={{flexDirection:'column', flex:0.25, marginTop: 30}}>
-            <Text style={styles.order_text_h2}>{data.unitPrice}</Text>
           </View>
         </View>
         </TouchableHighlight>
