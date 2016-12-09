@@ -169,18 +169,16 @@ class Shop extends Component {
       var itemTotal = data.quantity * data.price;
       itemTotal = itemTotal.toFixed(2);
       return (
-        <View style={{flex:1}}>
+        <View style={{flex:1, paddingTop: 10}}>
           <View style={{alignItems: 'flex-start', flexDirection: 'row'}}> 
-            <View style={{flex: 1, flexDirection: 'column'}}>
-              <Text style={styles.order_text_h2}>{data.name}</Text>    
+            <View style={{flex: 0.6, flexDirection: 'column'}}>
+              <Text style={styles.order_text_h2}>{data.name}</Text>
+              <Text style={styles.order_text_h2}>{data.priceDisplay}</Text>  
             </View>
-            <View style={{flex: 1, flexDirection: 'column'}}>
-              <Text style={styles.order_text_h2}>{data.priceDisplay}</Text>    
-            </View>
-            <View style={{flex: 1, flexDirection: 'column'}}>
+            <View style={{flex: 0.15, flexDirection: 'column'}}>
               <Text style={styles.order_text_h2}>{data.quantity}</Text>    
             </View>
-            <View style={{flex: 1, flexDirection: 'column'}}>
+            <View style={{flex: 0.25, flexDirection: 'column'}}>
               <Text style={styles.order_text_h2}>{itemTotal}</Text>    
             </View>
           </View>
@@ -224,16 +222,13 @@ class Shop extends Component {
                 <Text style={styles.order_text_title}>Crate Summary</Text>
               </View>
               <View style={{alignItems: 'center', flexDirection: 'row'}}> 
-              <View style={{flex: 1, flexDirection: 'column'}}>
+              <View style={{flex: 0.6, flexDirection: 'column'}}>
                 <Text style={styles.order_text_h1_bold}>Item</Text>    
               </View>
-              <View style={{flex: 1, flexDirection: 'column'}}>
-                <Text style={styles.order_text_h1_bold}>Unit Price</Text>    
-              </View>
-              <View style={{flex: 1, flexDirection: 'column'}}>
+              <View style={{flex: 0.15, flexDirection: 'column'}}>
                 <Text style={styles.order_text_h1_bold}>Qnt.</Text>    
               </View>
-              <View style={{flex: 1, flexDirection: 'column'}}>
+              <View style={{flex: 0.25, flexDirection: 'column'}}>
                 <Text style={styles.order_text_h1_bold}>Item Total</Text>    
               </View>
             </View>
