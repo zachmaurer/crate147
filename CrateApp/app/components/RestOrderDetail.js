@@ -13,7 +13,7 @@ import ReactNative, {
   BackAndroid,
 } from 'react-native';
 
-var orders = require('../assets/orders.json');
+var orders = require('../assets/restorders.json');
 var catalog = require('../assets/catalog.json');
 
 var catalog_imgs = {
@@ -40,7 +40,7 @@ var client_maps = {
 var ds = new ListView.DataSource({ rowHasChanged: (row1, row2) => row1 !== row2 })
 
 
-class OrderDetailPending extends Component {
+class RestOrderDetail extends Component {
 	constructor(props) {
 	      super(props);
 
@@ -61,6 +61,7 @@ class OrderDetailPending extends Component {
 	 	var qty = order.order[i].qty;
 	 	var obj = catalog.find(findProduct(pid)); 	
 	 	obj.qty= qty;
+            obj.farm = order.order[i].farm;
 	 	products.push(obj) 
 	 }
 
@@ -88,9 +89,10 @@ class OrderDetailPending extends Component {
 		<View style={{flex:1, alignItems: 'center', flexDirection: 'row'}}>	
     		<Image source={catalog_imgs[data.picture]} style={styles.catalog_photo}/>
     		<View style={{flex: 1, flexDirection: 'column'}}>
-    		<Text style={styles.order_text_h1}>{data.name} ({data.type})</Text>	
+    		<Text style={styles.order_text_h1}>{data.name} ({data.type})</Text>
+            <Text style={styles.order_text_h1}>{data.farm}</Text> 	
     		</View>
-            <Text style={styles.available}>Available</Text>
+            <Text style={{color:'red'}}>Pending</Text>
     		<Text style={styles.order_text_h2}>QTY: {data.qty}</Text>
     		<Text style={styles.order_text_h2}>{data.price}</Text>
     		<Text style={styles.order_text_h2}></Text>
@@ -110,20 +112,16 @@ class OrderDetailPending extends Component {
 		var order = orders.find(findOrder);
 		return(
 			<View style={styles.container}>
-			<View style={{alignItems: 'center', flexDirection: 'row'}}>	
-			<Image source={company_imgs[order.id]} style={styles.product_image}/>
-			<Text style={styles.h1}> Client: {order.client} </Text>
-
+			<View style={{alignItems: 'center', flexDirection: 'row'}}>				
+			<Text style={styles.header}> {order.name} </Text>
+                  
 			</View>	
 			<View style={{alignItems: 'center', flexDirection: 'row'}}>	
-			<Text style={styles.h2}> Address: {order.address} </Text>
+                    <Text style={styles.h3}>Order #: {order.id} </Text>
 			<Text style={styles.h3}> Due: {order.date} </Text>
 			<Text style={styles.h3}> Delivery Time: {order.delivery_time} </Text>
-
 			</View>	
-	         	
-
-
+			
 			<Text style={styles.h1}> Order Details </Text>
 			<ListView
         			dataSource={this.state.dataSource}
@@ -134,23 +132,19 @@ class OrderDetailPending extends Component {
 
 
         			  /> 
+                <View style={{justifyContent: 'flex-end',  alignItems: 'flex-end', paddingRight: 30}}>
+                <Text style={styles.header}> Total Cost: {order.cost}</Text>
+                </View>
+             <View style={{flex:1,alignItems: 'center', flexDirection: 'row', justifyContent: 'center',}}> 
 
-     <View style={{flex:1,alignItems: 'center', flexDirection: 'row', justifyContent: 'center',}}> 
                 <TouchableHighlight style={styles.button2}
                   underlayColor='#99d9f4'>
-                <Text style={styles.buttonText}>Reject</Text>
+                <Text style={styles.buttonText} onPress={() => this.onBackPress()}>Cancel Order</Text>
               </TouchableHighlight>       
-  <TouchableHighlight style={styles.button1}
-                  underlayColor='#99d9f4'>
-                <Text style={styles.buttonText}>Accept</Text>
-              </TouchableHighlight>
-            
-  </View>
-            <View>
-        			  <Image source={client_maps[order.id]} style={styles.map}/>
-                </View>
-                </View>
-		
+                   
+               </View>
+
+			</View>
 		);
 	}
 
@@ -201,9 +195,6 @@ li_container: {
     //flex:2,
     flexDirection: 'row',
     color: 'red'
-  },
-  available: {
-     color: 'green',
   },
   catalog_photo: {
     marginLeft: 10,
@@ -261,7 +252,7 @@ li_container: {
   },
    map: {
     height: 200,
-   flex: 1,
+    flex: 1,
     	resizeMode: 'cover',
   },
    company_photo: {
@@ -277,7 +268,12 @@ li_container: {
     height: StyleSheet.hairlineWidth,
     backgroundColor: '#8E8E8E',
   },
-  buttonText: {
+   header: {
+    paddingTop: 20,
+    marginLeft: 12,
+    fontSize: 35,
+  },
+ buttonText: {
   fontSize: 24,
   color: 'white',
   alignSelf: 'center'
@@ -306,4 +302,4 @@ button2: {
 },
 });
 
-module.exports = OrderDetailPending;
+module.exports = RestOrderDetail;

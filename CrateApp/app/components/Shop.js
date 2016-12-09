@@ -18,8 +18,10 @@ import ReactNative, {
 // if package missing, 'npm install react-native-tabs'
 import Tabs from 'react-native-tabs';
 import ProductOffers from './ProductOffers.js';
+import RestOrderDetail from './RestOrderDetail.js'
 
 
+var restorders = require('../assets/restorders.json');
 var orders = require('../assets/orders.json');
 var catalog = require('../assets/catalog.json');
 var crate = require('../assets/crate.json');
@@ -51,7 +53,20 @@ class Shop extends Component {
       this.state['crateData'] = ds.cloneWithRows(crate);
       //this.setState({page: "orders"});
       //console.warn(JSON.stringify(props.appState));
+
+       this.state['restorderData'] = ds.cloneWithRows(restorders);
+
     }
+
+
+    viewOrderDetail(id) {
+        this.props.navigator.push({
+          title: "Order Detail",
+          component: RestOrderDetail,
+          orderID: id
+        });
+    }
+
 
   onBackPress(){
     return true;
@@ -104,6 +119,24 @@ class Shop extends Component {
      
   };
 
+
+
+    renderOrderLi(data) {
+    	return (
+    		<TouchableHighlight onPress={() => this.viewOrderDetail(data.id)}>
+    		<View>
+		<View style={{flex:1, alignItems: 'center', flexDirection: 'row'}}>	
+    		<View style={{flex: 1, flexDirection: 'column'}}>
+    		<Text style={styles.header}>{data.name}</Text>
+            <Text style={styles.order_text_h1}>Order #{data.id}</Text>
+    		<Text style={styles.order_text_h2}>{data.cost}</Text>
+    		</View>
+    		<Text style={[styles.order_text_h2, styles.important_text]}>Due: {data.date}</Text>
+    		</View>
+    		</View>
+    		</TouchableHighlight>
+   	);
+    }
 
     renderCatalogLi(data) {
     	return (
@@ -211,11 +244,21 @@ class Shop extends Component {
 	case 'pending':
 	        return (
 	            <View style={styles.container}>
-              <ScrollView>
-              <Text style={styles.order_text_h1}> {this.state.username} </Text>
-              <Text style={styles.order_text_h2}> {this.state.test} </Text>
-              <Text> {JSON.stringify(this.state)} </Text>
-              </ScrollView>
+          
+               <ListView
+              dataSource={this.state.restorderData}
+              renderRow={(rowData) => this.renderOrderLi(rowData)}
+              renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
+               renderHeader={() => 
+                        <View style={styles.search_container}>
+          <TextInput
+            style={styles.search_input}
+            placeholder="Search..."
+            onChangeText={(text) => this.searchData(text, 'orders')}
+          />
+        </View>}  
+                />      
+
     <Tabs selected={this.state.page} style={{backgroundColor:'white'}}
                 selectedStyle={{color:'red'}} onSelect={el=>this.setState({page:el.props.name, searchText: ""})}>
               <Text name="search" selectedIconStyle={{borderTopWidth:2,borderTopColor:'red'}}>Search</Text>
@@ -320,6 +363,11 @@ li_container: {
     fontSize: 15,
     backgroundColor: '#FFFFFF',
     borderRadius: 2,
+  },
+  header: {
+    paddingTop: 20,
+    marginLeft: 12,
+    fontSize: 24,
   },
 
 

@@ -1,0 +1,29 @@
+[
+{
+"id": 1,
+"name": "Produce Refresh",
+"date": "12/16/16",
+"delivery_time": "6:00am",
+"client_id": "1",
+"order": [ {"id": 1, "qty": 2, "farm": "Jordan's Organics" }, {"id": 2, "qty": 3, "farm": "Jordan's Organics"}],
+"cost": "$59.50"
+},
+
+{
+"id": 2,
+"date": "12/19/16",
+"name": "Dairy -- Mac n' Cheese Promotion",
+"client_id": "2",
+"order": [ {"id": 3, "qty": 2, "farm": "Johnson Farm" }, {"id": 2, "qty": 10, "farm": "Johnson Farm" }],
+"cost": "$80.50"
+},
+
+{
+"id": 3,
+"date": "12/26/16",
+"name": "Order for JT Wedding Catering",
+"client_id": "3",
+"order": [ {"id": 5, "qty": 2, "farm": "Johnson Farm"}, {"id": 4, "qty": 3, "farm": "Alcatraz Produce"}, {"id": 3, "qty": 3, "farm": "Chesterfield Farms"}, {"id": 2, "qty": 3, "farm": "Chesterfield Farms"}, {"id": 5, "qty": 2, "farm": "Chesterfield Farms"},{"id": 2, "qty": 10, "farm": "Chesterfield Farms"} ],
+"cost": "$300.22"
+}
+]
