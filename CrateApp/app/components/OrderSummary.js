@@ -160,6 +160,20 @@ class OrderSummary extends Component {
             <Text style={styles.buttonText}>Add to Crate</Text>
           </TouchableHighlight>
         </View>
+      </View>
+
+      <View style={{marginTop:30}}>
+        <Hr lineColor='#8E8E8E' />
+        <View style={{flexDirection:'row'}}>
+          <View style={{marginTop: 10, marginBottom: 5, marginLeft:12}}>
+            <Text style={styles.order_text_h1_lo}>About {farm.name}</Text>
+          </View>
+        </View>
+        <View style={{flexDirection:'row'}}>
+          <View style={{marginBottom: 10, marginLeft:12}}>
+            <Text style={styles.order_text_h2}>{farm.name} is a family-run business - our family has been working on this land for over three generations. Based near Grass Valley, California, we specialize in fresh, organic produce and dairy products. We believe deeply in sustainable food, and are proud partners with local restaurants who have chosen to source only from local farmers like us.</Text>
+          </View>
+        </View>
         <Hr lineColor='#8E8E8E' />
       </View>
 

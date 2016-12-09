@@ -17,6 +17,7 @@ import ReactNative, {
 // react-native-tabs is not a default node package
 // if package missing, 'npm install react-native-tabs'
 import Tabs from 'react-native-tabs';
+import Hr from 'react-native-hr';
 import SegmentedControlTab from 'react-native-segmented-control-tab';
 import Test from './Test.js';
 import ProductDetail from './ProductDetail.js';
@@ -29,6 +30,8 @@ var orders = require('../assets/orders.json');
 var gear = require('../assets/settings.png');
 var pendingOrders = require('../assets/pendingorders.json');
 var catalog = require('../assets/catalog.json');
+var farms = require('../assets/farms.json');
+var prices = require('../assets/prices.json');
 
 var catalog_imgs = {
 	"gouda.jpg" : require('../assets/catalog_imgs/gouda.jpg'),
@@ -43,6 +46,18 @@ var company_imgs = {
 	2 : require('../assets/company_imgs/3.jpg'),
 };
 
+var profile_imgs = {
+  1 : require('../assets/profile_imgs/1.jpg'),
+  2 : require('../assets/profile_imgs/2.jpg'),
+  3 : require('../assets/profile_imgs/3.jpg'),
+};
+
+var farm_imgs = {
+  1 : require('../assets/farm_imgs/rochester.jpg'),
+  2 : require('../assets/farm_imgs/delorro.jpg'),
+  /*9 : require('../assets/farm_imgs/4-stars.jpg'),*/
+};
+
 
 
 class Catalog extends Component {
@@ -54,7 +69,14 @@ class Catalog extends Component {
       const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
       this.state['orderData'] = ds.cloneWithRows(orders);
       this.state['catalogData'] = ds.cloneWithRows(catalog);
-      this.state['approvedVisible'] = true; 
+      this.state['approvedVisible'] = true;
+      this.state['farmID'] = 2;
+      this.state['farm'] = (function() {
+        function withProductID(e) {
+          return e.id == 1;
+        }
+        return farms.find(withProductID);
+      })();
       //this.setState({page: "orders"});
       //console.warn(JSON.stringify(props.appState));
     }
@@ -324,25 +346,91 @@ class Catalog extends Component {
 
 	case 'profile':
 	        return (
-	            <View style={styles.container}>
-              <ScrollView>
-              <Text style={styles.order_text_h1}> {this.state.username} </Text>
-              <Text style={styles.order_text_h2}> {this.state.test} </Text>
-              <Text> {JSON.stringify(this.state)} </Text>
-              </ScrollView>
-	 	<Tabs selected={this.state.page} style={{backgroundColor:'white'}}
+          <View style={styles.container}>
+	         <ScrollView>
+            <View style={{alignItems: 'center', flexDirection: 'row'}}> 
+              <Image source={farm_imgs[1]} style={styles.product_image}/>
+              <View style={{flexDirection: 'column'}}>
+                <Text style={styles.order_text_title}>  Rochester Farms </Text>
+                <Text style={styles.order_text_h2}>Customer Rating: 4/5</Text>
+              </View>
+            </View>
+            <View style={{marginTop:10}}>
+              <Hr lineColor='#8E8E8E' />
+              <View style={{flexDirection:'row'}}>
+                <View style={{marginTop: 10, marginBottom: 5, marginLeft:12}}>
+                  <Text style={styles.order_text_h1_lo}>About Rochester Farms</Text>
+                </View>
+              </View>
+              <View style={{flexDirection:'row'}}>
+                <View style={{marginBottom: 10, marginLeft:12}}>
+                  <Text style={styles.order_text_h2}>Rochester Farms is a family-run business - our family has been working on this land for over three generations. Based near Grass Valley, California, we specialize in fresh, organic produce and dairy products. We believe deeply in sustainable food, and are proud partners with local restaurants who have chosen to source only from local farmers like us.</Text>
+                </View>
+              </View>
+              <Hr lineColor='#8E8E8E' />
+            </View>
+
+            {/*Reviews*/}
+            <View style={{flex:1, flexDirection:'row', alignItems:'center', justifyContent:'center'}}>
+              <Text style={styles.order_text_title}>Reviews</Text>
+            </View>
+            {/*#1*/}
+            <View style={{marginTop: 30, flex:1, flexDirection:'row'}}>
+              <View style={{flex:0.25, flexDirection:'column', alignItems:'center'}}>
+                <Image source={profile_imgs[1]} style={styles.catalog_photo}/>
+              </View>
+              <View style={{flex:0.75, flexDirection:'column'}}>
+                <View style={{flex:0.4, flexDirection:'row'}}>
+                  <Text style={styles.order_text_h1_lo}>Douglas Robinson</Text>
+                </View>
+                <View style={{flex:0.6, flexDirection:'row'}}>
+                <Text style={styles.order_text_h2}>They consistently deliver on their promise for high-quality, fresh, sustainable ingredients. I am proud to be their partner in our mission for sustainable food, and I and one of many satisfied customers.</Text>
+                </View>
+              </View>
+            </View>
+            {/*#2*/}
+            <View style={{marginTop: 30, flex:1, flexDirection:'row'}}>
+              <View style={{flex:0.25, flexDirection:'column', alignItems:'center'}}>
+                <Image source={profile_imgs[2]} style={styles.catalog_photo}/>
+              </View>
+              <View style={{flex:0.75, flexDirection:'column'}}>
+                <View style={{flex:0.4, flexDirection:'row'}}>
+                  <Text style={styles.order_text_h1_lo}>Anita Lao</Text>
+                </View>
+                <View style={{flex:0.6, flexDirection:'row'}}>
+                <Text style={styles.order_text_h2}>Great ingredients from people you can count on.  Their dedication to sustainable food is inspiring, and they never forget how their food is going to end up on someone's table.  Truly great partners.</Text>
+                </View>
+              </View>
+            </View>
+            {/*#3*/}
+            <View style={{marginTop: 30, flex:1, flexDirection:'row'}}>
+              <View style={{flex:0.25, flexDirection:'column', alignItems:'center'}}>
+                <Image source={profile_imgs[3]} style={styles.catalog_photo}/>
+              </View>
+              <View style={{flex:0.75, flexDirection:'column'}}>
+                <View style={{flex:0.4, flexDirection:'row'}}>
+                  <Text style={styles.order_text_h1_lo}>Terry Moynihan</Text>
+                </View>
+                <View style={{flex:0.6, flexDirection:'row'}}>
+                <Text style={styles.order_text_h2}>I've been sourcing from them for over 3 years, and they have never flagged in quality.  Plus, they offer some of the best deals in the area.</Text>
+                </View>
+              </View>
+            </View>
+            <View style={{marginTop:60}}></View>
+          </ScrollView>
+	 	   <Tabs selected={this.state.page} style={{backgroundColor:'white'}}
 	              selectedStyle={{color:'red'}} onSelect={el=>this.setState({page:el.props.name, searchText: ""})}>
 	            <Text name="orders" selectedIconStyle={{borderTopWidth:2,borderTopColor:'red'}}>Orders</Text>
 	            <Text name="catalog" selectedIconStyle={{borderTopWidth:2,borderTopColor:'red'}}>Catalog</Text>
 	            <Text name="profile" selectedIconStyle={{borderTopWidth:2,borderTopColor:'red'}}>Profile</Text>
 	            <Text name="settings" selectedIconStyle={{borderTopWidth:2,borderTopColor:'red'}}>Settings</Text>
 	        	</Tabs>
-	            </View>
+            </View>
 	        );
 
 	case 'settings':
 	        return (
-	            <View style={styles.container}>
+	          <View style={styles.container}>
               <View style={{ alignItems: 'center', flex:1, paddingTop: 200}}>
 	            <Image source ={gear}/>
               </View>
@@ -353,7 +441,7 @@ class Catalog extends Component {
 	            <Text name="profile" selectedIconStyle={{borderTopWidth:2,borderTopColor:'red'}}>Profile</Text>
 	            <Text name="settings" selectedIconStyle={{borderTopWidth:2,borderTopColor:'red'}}>Settings</Text>
 	        	</Tabs>
-	            </View>
+	          </View>
 	        );
     	}
     }
@@ -381,10 +469,24 @@ li_container: {
     flexDirection: 'column',
     alignItems: 'center',
   },
+  order_text_title: {
+    paddingTop: 20,
+    marginLeft: 12,
+    fontSize: 26,
+    //flex:1,
+    //flexDirection: 'row',
+    justifyContent: 'center',
+  },
   order_text_h1: {
     paddingTop: 20,
     marginLeft: 12,
     fontSize: 16,
+    //flex:1,
+    //flexDirection: 'row',
+  },
+    order_text_h1_lo: {
+    marginLeft: 12,
+    fontSize: 18,
     //flex:1,
     //flexDirection: 'row',
   },
@@ -394,6 +496,15 @@ li_container: {
     fontSize: 14,
     //flex:2,
     flexDirection: 'row',
+  },
+  product_image: {
+  width: 100,
+  height: 100,
+  borderRadius: 20,
+  resizeMode: 'cover',
+  paddingLeft: 10,
+  marginLeft: 5,
+  marginTop: 5,
   },
   catalog_photo: {
     marginLeft: 10,
