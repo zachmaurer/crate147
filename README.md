@@ -9,14 +9,14 @@
 
 ## Snapshots of Product Pitch Video 
 
+### Hook
 ![Alt Text](https://github.com/zachmaurer/crate147/raw/master/assets/salad.gif)
-
 ![Alt Text](https://github.com/zachmaurer/crate147/raw/master/assets/eggs.gif)
 
+### Try Crate
 ![Alt Text](https://github.com/zachmaurer/crate147/raw/master/assets/settle.gif)
 
+### How it works
 ![Alt Text](https://github.com/zachmaurer/crate147/raw/master/assets/upload.gif)
-
 ![Alt Text](https://github.com/zachmaurer/crate147/raw/master/assets/order.gif)
-
 ![Alt Text](https://github.com/zachmaurer/crate147/raw/master/assets/deliver.gif)
